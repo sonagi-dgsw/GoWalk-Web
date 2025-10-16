@@ -44,6 +44,20 @@ export const Button=styled.button`
     fonst-size:5vw;
     border:none;
     margin-left:8vw;
-    margin-top:5vh;
+    margin-top:2vh;
 
+`
+
+export const AskAccount=styled.h1`
+margin-top:1vh;
+font-size:4vw;
+color:#888888;
+font-weight: 600;
+margin-left:40vw;
+`
+
+export const Domember=styled.span`
+    font-size:4vw;
+    color:#5AAAEF;
+    text-decoration: underline;
 `
