@@ -1,11 +1,13 @@
 import * as S from "./styles/styles.ts";
-import Button from "./components/Button.tsx";
+import InputForm from "../../components/InputForm.tsx";
 
 const SignIn = () => {
     return (
         <>
-            <Button />
-            <S.Button2>hello2</S.Button2>
+            <S.Gowalk src="src/pages/img/스크린샷 2025-10-15 오후 4.48.05.png" alt=""></S.Gowalk>
+            <InputForm sort="이메일 주소"></InputForm>
+            <InputForm sort="비밀번호"></InputForm>
+            <S.Button>로그인</S.Button>
         </>
     )
 }
