@@ -72,9 +72,11 @@ export const Title = styled.h1`
 `;
 
 export const Time = styled.h1`
-  position: absolute;
   font-size: 16px;
   color: #5aaaef;
-  bottom: 428px;
-  left: 10vw;
+  margin-left: 15px;
+  margin-top: 0;
+  position:absolute;
+  bottom: 395px;
 `;
+

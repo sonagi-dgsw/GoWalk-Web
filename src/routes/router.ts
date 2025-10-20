@@ -6,6 +6,8 @@ import NotFoundPage from "@/pages/error/NotFoundPage.tsx";
 import Walk from "@/pages/walk/Walk.tsx";
 import Ranking from "@/pages/ranking/Ranking.tsx";
 import Home from "@/pages/home/Home.tsx";
+import Member_emailaddress from "@/pages/member/Member_emailaddress.tsx";
+import Member_certification from "@/pages/member/Member_certification.tsx";
 
 const router = createBrowserRouter([
     {
@@ -37,6 +39,14 @@ const router = createBrowserRouter([
             {
                 path: "*",
                 Component: NotFoundPage,
+            },
+            {
+                path: "/member_emailaddress",
+                Component: Member_emailaddress,
+            },
+            {
+                path: "/member_certification",
+                Component: Member_certification,
             },
         ]
     }
