@@ -25,10 +25,6 @@ export const InputFormtext=styled.input`
     line-height:1;
     margin-bottom:1.3vh;
     border:none;
-    width:86vw;
-    &::placeholder{
-    color:#b8b8b8;
-    }
 `
 
 export const Line=styled.hr`
@@ -66,3 +62,22 @@ export const Domember=styled.span`
     color:#5AAAEF;
     text-decoration: underline;
 `
+
+
+export const Title=styled.h1`
+    font-weight:700;
+    font-size:8vw;
+    text-align:center;
+    margin-top:21vh;
+    margin-bottom:9.5vh;
+`
+
+export const Time=styled.h1`
+    position:absolute;
+    font-size:4vw;
+    color:#5AAAEF;
+    bottom:52vh;
+    left:10vw
+
+`
+

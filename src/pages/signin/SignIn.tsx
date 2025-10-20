@@ -1,6 +1,6 @@
 import * as S from "./styles/styles.ts";
 import InputForm from "../../components/InputForm.tsx";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
 const SignIn = () => {
     return (
@@ -9,7 +9,7 @@ const SignIn = () => {
             <InputForm sort="이메일 주소"></InputForm>
             <InputForm sort="비밀번호"></InputForm>
             <Link to="" style={{textDecoration:"none"}}><S.Button style={{fontSize:"5vw"}}>로그인</S.Button></Link>
-            <S.AskAccount>계정이 없으신가요? <S.Domember>회원가입하기</S.Domember></S.AskAccount>
+            <Link to="/member_emailaddress" style={{textDecoration:"none"}}><S.AskAccount>계정이 없으신가요? <S.Domember>회원가입하기</S.Domember></S.AskAccount></Link>
         </>
     )
 }
