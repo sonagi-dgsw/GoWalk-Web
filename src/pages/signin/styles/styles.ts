@@ -5,6 +5,7 @@ export const Gowalk = styled.img`
   width: 180px;
   margin-bottom: 90.09px;
   margin-left: 111px;
+    height: 100%;
 `;
 
 export const InputFormtitle = styled.h1`

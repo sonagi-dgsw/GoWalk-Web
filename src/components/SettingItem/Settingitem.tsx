@@ -1,4 +1,4 @@
-import * as S from "/Users/ghkdrudals/Desktop/programming/WEB/Gowalk-Web-Setting/src/components/SettingItem/SettingItem.ts";
+import * as S from "@/components/SettingItem/SettingItem.ts";
 import React from "react";
 
 export default function SettingItem({ icon, label }: { icon: string; label: string }) {
