@@ -8,7 +8,7 @@ const Walk = () => {
 
     useEffect(() => {
         const script = document.createElement("script");
-        script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=cfb524003c0cb9fabffbb1f5a7311922&autoload=false`;
+        script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=APP_KEY&autoload=false`;
         script.async = true;
         document.head.appendChild(script);
 
