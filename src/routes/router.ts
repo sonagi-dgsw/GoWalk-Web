@@ -1,6 +1,7 @@
 import {createBrowserRouter} from "react-router";
 import SignIn from "../pages/signin/SignIn.tsx";
 import Layout from "../widgets/layout/Layout.tsx";
+import WalkFinishPage from "../pages/walk/finish/WalkFinish.tsx";
 
 const router = createBrowserRouter([
     {
@@ -8,9 +9,18 @@ const router = createBrowserRouter([
         Component: Layout,
         children: [
             {
-                path: "/signin",
+                path: "signin",
                 Component: SignIn,
             },
+            {
+                path: "walk",
+                children: [
+                    {
+                        path: "finish",
+                        Component: WalkFinishPage,
+                    }
+                ]
+            }
         ]
     }
 ])
