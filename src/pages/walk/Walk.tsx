@@ -88,7 +88,13 @@ const Walk = () => {
         };
     }, []);
 
-    return <MapContainer ref={mapRef} />;
+    return (
+        <div style={{ position: "relative", height: "100vh" }}>
+            <MapContainer ref={mapRef} />
+            <WalkInfoCard />
+        </div>
+
+    );
 };
 
 export default Walk;
