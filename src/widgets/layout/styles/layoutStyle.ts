@@ -9,10 +9,26 @@ export const Wrapper = styled.div`
 `;
 
 export const Container = styled.div`
-    width: 375px;
-    height: 812px;
+    width: 375px; // iPhone 12 Size
+    height: 812px; // iPhone 12 Size
     border-radius: 30px;
-    border: 2px solid #ccc;
-    padding: 15px;
+    border: 1px solid #ccc;
     box-sizing: border-box;
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: 30px 1fr;
+`
+
+export const Content = styled.div`
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+`;
+
+export const StatusBar = styled.div`
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
 `
