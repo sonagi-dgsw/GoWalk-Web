@@ -1,4 +1,3 @@
-/* 기본 스타일 */
 body {
   font-family: "Pretendard", sans-serif;
   background: #f9fafb;
@@ -11,6 +10,7 @@ body {
 
 .container {
   background: #ffffff;
+  border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   width: 375px;
   overflow: hidden;
@@ -220,27 +220,3 @@ img {
   font-weight: 700;
   color: #ef895a;
 }
-
-.walk_button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.button {
-  width: 340px;
-  height: 50px;
-  background-color: #5aaaef;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  font-size: 18px;
-  font-weight: bold;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  margin-top: 10px;
-  cursor: pointer;
-}
-

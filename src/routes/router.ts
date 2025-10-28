@@ -91,7 +91,7 @@ const router = createBrowserRouter([
                 Component: NotFoundPage,
             },
         ]
-    },
+    }
 ])
 
 export default router;
