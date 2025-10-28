@@ -36,7 +36,6 @@ const Ranking: React.FC = () => {
   );
 
   const top3 = sortedData.slice(0, 3);
-  const others = sortedData.slice(3);
   const myRanking = sortedData.find(item => item.isMe);
 
   const renderValue = (item: RankingProps) =>
