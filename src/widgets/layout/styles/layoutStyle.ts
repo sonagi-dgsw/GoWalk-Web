@@ -11,8 +11,8 @@ export const Wrapper = styled.div`
 export const Container = styled.div`
     width: 375px;
     height: 812px;
-    background-color: black;
     border-radius: 30px;
+    border: 2px solid #ccc;
     padding: 15px;
     box-sizing: border-box;
 `
