@@ -1,5 +1,7 @@
 import { useEffect, useRef } from "react";
 import { MapContainer } from "./styles/styles";
+import petshop from '../walk/assets/petshop.png';
+import WalkInfoCard from "./components/WalkInfoCard";
 
 const Walk = () => {
     const KAKAO_MAP_KEY = import.meta.env.VITE_KAKAO_MAP_KEY;
@@ -32,6 +34,13 @@ const Walk = () => {
                     const imageOption = { offset: new window.kakao.maps.Point(20, 42) };
                     const markerImage = new window.kakao.maps.MarkerImage(
                         imageSrc,
+                        imageSize,
+                        imageOption
+                    );
+
+                    // 펫샵 마커
+                    const petshopImage = new window.kakao.maps.MarkerImage(
+                        petshop,
                         imageSize,
                         imageOption
                     );
