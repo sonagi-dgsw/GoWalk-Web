@@ -1,5 +1,4 @@
 import * as S from "./styles/walkFinishStyle.ts";
-import {InformationMessage, StatTitle, StatValue} from "./styles/walkFinishStyle.ts";
 import Slide from "../../../components/slide/Slide.tsx";
 
 const WalkFinishPage = () => {
@@ -16,13 +15,13 @@ const WalkFinishPage = () => {
                 <S.StatTitle>산책 시간</S.StatTitle>
                 <S.StatValue>03:21:13</S.StatValue>
 
-                <StatTitle>산책 거리</StatTitle>
-                <StatValue>3.4km</StatValue>
+                <S.StatTitle>산책 거리</S.StatTitle>
+                <S.StatValue>3.4km</S.StatValue>
 
-                <StatTitle>소모 칼로리</StatTitle>
-                <StatValue>132.1kcal</StatValue>
+                <S.StatTitle>소모 칼로리</S.StatTitle>
+                <S.StatValue>132.1kcal</S.StatValue>
 
-                <InformationMessage>산책가자가 제공하는 칼로리 정보는 정확하지 않을 수 있으며, 참고용으로 사용하시기를 권장합니다.</InformationMessage>
+                <S.InformationMessage>산책가자가 제공하는 칼로리 정보는 정확하지 않을 수 있으며, 참고용으로 사용하시기를 권장합니다.</S.InformationMessage>
             </S.Card>
             <S.Card>
                 <S.CardTitle>오늘 산책 어땠나요?</S.CardTitle>
