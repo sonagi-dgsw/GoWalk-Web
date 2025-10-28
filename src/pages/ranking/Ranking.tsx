@@ -58,14 +58,12 @@ const Ranking: React.FC = () => {
             onClick={() => setMode("distance")}
           >
             거리
-          <div className="tab-underline" />
           </div>
           <div
             className={`tab ${mode === "time" ? "active" : ""}`}
             onClick={() => setMode("time")}
           >
             시간
-          <div className="tab-underline" />
           </div>
         </div>
       </div>
