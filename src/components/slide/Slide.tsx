@@ -10,8 +10,8 @@ const Slide = (props: SlideProps) => {
         <S.Label>{props.label}</S.Label>
         <S.SlideBar />
         <S.TextList>
-            {props.messages.map(message => (
-                <S.Text>
+            {props.messages.map((message, idx) => (
+                <S.Text key={idx}>
                     {message}
                 </S.Text>
             ))}
