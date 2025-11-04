@@ -38,13 +38,11 @@ const WalkInfoCard = () => {
 
   const handleStopConfirm = () => {
     setShowStopModal(false);
-    alert("산책 종료 (기록되지 않음)");
     navigate("/");
   };
 
   const handleEndConfirm = () => {
     setShowEndModal(false);
-    alert("산책 기록 완료 후 종료");
     navigate("/walk/finish");
   };
 
