@@ -5,8 +5,4 @@ export type HomeProps = {
   dogBreed: string;
   dogAge: number;
   dogWeight: number;
-  dayWalkTime: number;
-  dayWalkDistance: number;
-  useKcal: number;
-  consecutiveDays: number;
 };
