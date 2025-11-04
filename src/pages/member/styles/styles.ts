@@ -38,45 +38,68 @@ export const Line = styled.hr`
 `;
 
 export const Button = styled.button`
-  width: 346px;
-  height: 56px;
+  width: 86vw;
+  height: 6.5vh;
   background-color: #5aaaef;
   border-radius: 16px;
   color: white;
   font-weight: 700;
-  font-size: 20px;
+  fonst-size: 5vw;
   border: none;
-  margin-top: 44px;
-  margin-left: 15px;
+  margin-left: 8vw;
+  margin-top: 1.8vh;
 `;
+
 export const AskAccount = styled.h1`
-  margin-top: 8px;
-  font-size: 16px;
+  margin-top: 1vh;
+  font-size: 4vw;
   color: #888888;
   font-weight: 600;
-  margin-left: 150px;
+  margin-left: 36vw;
 `;
 
 export const Domember = styled.span`
-  font-size: 16px;
+  font-size: 4vw;
   color: #5aaaef;
   text-decoration: underline;
 `;
 
 export const Title = styled.h1`
   font-weight: 700;
-  font-size: 32px;
+  font-size: 8vw;
   text-align: center;
-  margin-top: 186.63px;
-  margin-bottom: 75.37px;
+  margin-top: 21vh;
+  margin-bottom: 8.5vh;
 `;
 
 export const Time = styled.h1`
-  font-size: 16px;
+  font-size: 4vw;
   color: #5aaaef;
-  margin-left: 15px;
-  margin-top: 0;
-  position:absolute;
-  bottom: 395px;
+  bottom: 52vh;
+  margin-left: 8vw;
+  position: absolute;
+  bottom: 53vh;
 `;
 
+export const Before = styled.h1`
+  font-size: 4vw;
+  color: #888888;
+  margin-left: 8vw;
+  text-decoration: underline;
+  decoration-color: #888888;
+  margin-top: 1vh;
+  line-height: 3.2vh;
+`;
+export const ErrorCover = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.2vh;
+  margin-bottom: 3.2vh;
+`;
+export const Errortext = styled.h1`
+  margin-left: 8vw;
+  font-size: 4vw;
+  margin-top: 0;
+  font-weight: 500;
+  margin-bottom: 0;
+`;

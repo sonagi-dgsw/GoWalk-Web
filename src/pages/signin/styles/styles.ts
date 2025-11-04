@@ -15,20 +15,6 @@ export const InputFormtitle = styled.h1`
   margin-left: 15px;
 `;
 
-export const InputFormtext = styled.input`
-  font-size: 20px;
-  color: #b8b8b8;
-  font-weight: 500;
-  line-height: 1;
-  margin-bottom: 12px;
-  border: none;
-  width: 346px;
-  &::placeholder {
-    color: #b8b8b8;
-  }
-  margin-left: 15px;
-`;
-
 export const Line = styled.hr`
   width: 346px;
   line-height: 1;
@@ -55,6 +41,20 @@ export const AskAccount = styled.h1`
   color: #888888;
   font-weight: 600;
   margin-left: 150px;
+`;
+
+export const InputFormtext = styled.input`
+  font-size: 5vw;
+  color: #181818;
+  margin-left: 8vw;
+  font-weight: 500;
+  line-height: 1;
+  margin-bottom: 1.3vh;
+  border: none;
+  width: 86vw;
+  &::placeholder {
+    color: #b8b8b8;
+  }
 `;
 
 export const Domember = styled.span`

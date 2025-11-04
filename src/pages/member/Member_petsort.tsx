@@ -2,25 +2,25 @@ import * as S from "/Users/ghkdrudals/Desktop/프로그래밍/WEB/GoWalk-Web/src
 import { useForm } from "react-hook-form";
 import { Link } from "react-router";
 import { useNavigate } from "react-router";
-const Member_name = () => {
+const Member_petsort = () => {
     const {register,setError,handleSubmit,formState:{errors}}=useForm();
     const navigate=useNavigate();
     const onValid = (data:any)=>{
-        navigate("/member_petname")
+        navigate("/member")
     }
     return(
         <form onSubmit={handleSubmit(onValid)}>
         <S.Title>회원가입</S.Title>
-        <S.InputFormtitle>이름</S.InputFormtitle>
-        <S.InputFormtext placeholder="이름을 입력해주세요" {...register("name",{required:"이름을 입력해주세요"})}></S.InputFormtext>
+        <S.InputFormtitle>견종</S.InputFormtitle>
+        <S.InputFormtext placeholder="반려견 이름을 입력해주세요" {...register("name",{required:"이름을 입력해주세요"})}></S.InputFormtext>
         <S.ErrorCover>
         <S.Line></S.Line>
+        {errors.name?.message?.toString()}
         </S.ErrorCover>
-        <S.Errortext>{errors.name?.message?.toString()}</S.Errortext>
-        <S.Button style={{fontSize:"5vw"}} type="submit">다음</S.Button>
-        <Link to="/member_certification"><S.Before>이전으로</S.Before></Link>
+        <S.Button style={{fontSize:"5vw"}}>다음</S.Button>
+        <Link to="/member_petname" style={{textDecoration:"none"}}><S.Before>이전으로</S.Before></Link>
         </form>
     )
 }
 
-export default Member_name;
+export default Member_petsort;
