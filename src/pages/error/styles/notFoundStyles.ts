@@ -18,6 +18,7 @@ export const StatusCode = styled.h1`
 
 export const Title = styled.h1`
     font-size: 20px;
+    font-weight: 300;
 `;
 
 export const Button = styled.button`

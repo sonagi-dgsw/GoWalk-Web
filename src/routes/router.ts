@@ -1,5 +1,4 @@
 import {createBrowserRouter} from "react-router";
-import SignIn from "../pages/signin/SignIn.tsx";
 import Layout from "../widgets/layout/Layout.tsx";
 import WalkFinishPage from "../pages/walk/finish/WalkFinish.tsx";
 import ErrorPage from "@/pages/error/ErrorPage.tsx";

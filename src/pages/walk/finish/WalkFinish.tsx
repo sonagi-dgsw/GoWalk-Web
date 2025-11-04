@@ -1,7 +1,14 @@
 import * as S from "./styles/walkFinishStyle.ts";
 import Slide from "../../../components/slide/Slide.tsx";
+import {useNavigate} from "react-router";
 
 const WalkFinishPage = () => {
+    const navigate = useNavigate();
+
+    const onFinish = () => {
+        navigate("/");
+    }
+
     return <S.Wrapper>
         <S.Header>
             <S.HeaderTitle>오늘의 산책 리포트</S.HeaderTitle>
@@ -37,7 +44,7 @@ const WalkFinishPage = () => {
                 <Slide label={'분위기'} messages={['한적하다', '적당하다', '시끄럽다']} />
             </S.Card>
         </S.Container>
-        <S.FinishButton>
+        <S.FinishButton onClick={onFinish}>
             종료하기
         </S.FinishButton>
     </S.Wrapper>;

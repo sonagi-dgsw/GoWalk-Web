@@ -6,8 +6,8 @@
   ],
   "compilerOptions": {
     "paths": {
-      "@/*": ["src/*"],
-      "@assets/*": ["src/assets/*"]
+      "@/*": ["./src/*"],
+      "@assets/*": ["./src/assets/*"]
     }
   }
 }
