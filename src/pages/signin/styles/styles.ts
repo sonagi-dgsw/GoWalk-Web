@@ -61,6 +61,20 @@ export const InputFormtext = styled.input`
   }
 `;
 
+export const InputFormtext = styled.input`
+  font-size: 5vw;
+  color: #181818;
+  margin-left: 8vw;
+  font-weight: 500;
+  line-height: 1;
+  margin-bottom: 1.3vh;
+  border: none;
+  width: 86vw;
+  &::placeholder {
+    color: #b8b8b8;
+  }
+`;
+
 export const Domember = styled.span`
   font-size: 14px;
   color: #5aaaef;
