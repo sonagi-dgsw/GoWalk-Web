@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { MapContainer } from "./styles/styles";
 import petshop from '../walk/assets/petshop.png';
 import WalkInfoCard from "./components/WalkInfoCard";
+import * as S from "./styles/styles.ts";
 
 const Walk = () => {
     const KAKAO_MAP_KEY = import.meta.env.VITE_KAKAO_MAP_KEY;
@@ -90,10 +91,10 @@ const Walk = () => {
     }, []);
 
     return (
-        <div style={{ position: "relative", height: "100vh" }}>
+        <S.Wrapper>
             <MapContainer ref={mapRef} />
             <WalkInfoCard />
-        </div>
+        </S.Wrapper>
 
     );
 };

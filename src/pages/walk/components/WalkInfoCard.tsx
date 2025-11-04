@@ -20,8 +20,11 @@ import {
   EndButton,
 } from "../styles/styles";
 import ConfirmModal from "./ConfirmModal";
+import {useNavigate} from "react-router";
 
 const WalkInfoCard = () => {
+  const navigate = useNavigate();
+
   const [showStopModal, setShowStopModal] = useState(false);
   const [showEndModal, setShowEndModal] = useState(false);
 
@@ -36,11 +39,13 @@ const WalkInfoCard = () => {
   const handleStopConfirm = () => {
     setShowStopModal(false);
     alert("산책 종료 (기록되지 않음)");
+    navigate("/");
   };
 
   const handleEndConfirm = () => {
     setShowEndModal(false);
     alert("산책 기록 완료 후 종료");
+    navigate("/walk/finish");
   };
 
   return (

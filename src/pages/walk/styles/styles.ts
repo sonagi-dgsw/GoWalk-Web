@@ -1,8 +1,14 @@
 import styled from "styled-components";
 
+export const Wrapper = styled.div`
+    position: relative;
+    height: 100%;
+    width: 100%;
+`
+
 export const MapContainer = styled.div`
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   // transform: scale(2);
   // transform-origin: center center;
 `;
@@ -56,6 +62,7 @@ export const MiddleRow = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0 20px;
 `;
 
 export const DistanceBox = styled.div`
@@ -114,27 +121,29 @@ export const StopButton = styled.button`
   flex: 1;
   background: #f2f2f2;
   border: none;
-  border-radius: 16px;
+  border-radius: 10px;
   padding: 10px 0;
   font-weight: 600;
   font-size: 16px;
   color: #0a0a0a;
+  cursor: pointer;
 `;
 
 export const EndButton = styled.button`
   flex: 2;
   background: #5aaaeF;
   border: none;
-  border-radius: 16px;
+  border-radius: 10px;
   padding: 10px 0;
   font-weight: 600;
   font-size: 16px;
   color: #ffffff;
+  cursor: pointer;
 `;
 
 /* --- 모달 오버레이 (dim 처리) --- */
 export const ModalOverlay = styled.div`
-  position: fixed;
+  position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.35);
   display: flex;
@@ -144,8 +153,7 @@ export const ModalOverlay = styled.div`
 `;
 
 export const ModalBox = styled.div`
-  width: 378px;
-  height: 205px;
+  width: 280px;
   background: #ffffff;
   box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.12);
   border-radius: 20px;
@@ -153,11 +161,12 @@ export const ModalBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 15px;
 `;
 
 export const ModalTitle = styled.div`
   font-weight: 600;
-  font-size: 24px;
+  font-size: 22px;
   color: #181818;
 `;
 
@@ -171,28 +180,29 @@ export const ModalSubText = styled.div`
 export const ButtonBox = styled.div`
   display: flex;
   justify-content: space-between;
+  gap: 10px;
   margin-top: 24px;
 `;
 
 export const CancelButton = styled.button`
-  width: 162px;
-  height: 60px;
+  padding: 15px 20px;
+  width: 100%;
   background: #f2f2f2;
   border: none;
   border-radius: 16px;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 500;
   color: #0a0a0a;
   cursor: pointer;
 `;
 
 export const ConfirmButton = styled.button`
-  width: 162px;
-  height: 60px;
+  padding: 15px 20px;
+  width: 100%;
   background: #5aaaeF;
   border: none;
   border-radius: 16px;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 500;
   color: #ffffff;
   cursor: pointer;
