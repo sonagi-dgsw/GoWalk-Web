@@ -5,7 +5,8 @@ import Navigation from "../navigation/Navigation.tsx";
 
 // Navigation 보여주지 않는 페이지 목록
 const independent_pages = [
-    "/walk/finish"
+    "/walk",
+    "/walk/finish",
 ]
 
 const Layout = () => {
