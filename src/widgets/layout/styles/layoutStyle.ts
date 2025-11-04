@@ -17,6 +17,9 @@ export const Container = styled.div<{$showNavigation: boolean}>`
     overflow: hidden;
     display: grid;
     grid-template-rows: 30px 1fr ${props => props.$showNavigation ? "80px" : 0};
+    box-shadow: 3px 6px 14px 0px rgba(0,0,0,0.1);
+    -webkit-box-shadow: 3px 6px 14px 0px rgba(0,0,0,0.1);
+    -moz-box-shadow: 3px 6px 14px 0px rgba(0,0,0,0.1);
 `
 
 export const Content = styled.div`

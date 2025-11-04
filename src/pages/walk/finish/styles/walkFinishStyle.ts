@@ -92,7 +92,7 @@ export const FinishButton = styled.button`
     color: white;
     position: absolute;
     width: calc(100% - 60px);
-    bottom: 10px;
+    bottom: 15px;
     box-shadow: 4px 4px 13px 0px rgba(171, 171, 171, 0.74);
     -webkit-box-shadow: 4px 4px 13px 0px rgba(171, 171, 171, 0.74);
     -moz-box-shadow: 4px 4px 13px 0px rgba(171, 171, 171, 0.74);
