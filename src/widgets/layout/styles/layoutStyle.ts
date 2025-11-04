@@ -16,10 +16,10 @@ export const Container = styled.div<{$showNavigation: boolean}>`
     box-sizing: border-box;
     overflow: hidden;
     display: grid;
-    grid-template-rows: 30px 1fr ${props => props.$showNavigation ? "80px" : 0};
-    box-shadow: 3px 6px 14px 0px rgba(0,0,0,0.1);
-    -webkit-box-shadow: 3px 6px 14px 0px rgba(0,0,0,0.1);
-    -moz-box-shadow: 3px 6px 14px 0px rgba(0,0,0,0.1);
+    grid-template-rows: 1fr ${props => props.$showNavigation ? "80px" : 0};
+    box-shadow: 2px 4px 7px 0px rgba(0,0,0,0.1);
+    -webkit-box-shadow: 2px 4px 7px 0px rgba(0,0,0,0.1);
+    -moz-box-shadow: 2px 4px 7px 0px rgba(0,0,0,0.1);
 `
 
 export const Content = styled.div`
@@ -27,11 +27,3 @@ export const Content = styled.div`
     overflow-x: hidden;
     overflow-y: auto;
 `;
-
-export const StatusBar = styled.div`
-    width: 100%;
-    border-bottom: 1px solid #ccc;
-    padding-left: 20px;
-    display: flex;
-    align-items: center;
-`

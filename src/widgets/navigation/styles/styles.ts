@@ -26,7 +26,7 @@ export const Item = styled.li`
     color: black;
 `;
 
-export const ItemLogo = styled.div`
+export const ItemLogo = styled.div<{$isActive: boolean}>`
     width: 25px;
 
     svg {
@@ -34,7 +34,7 @@ export const ItemLogo = styled.div`
         width: 100%;
 
         path {
-            fill: #00a6ff;
+            fill: ${props => props.$isActive ? "#00a6ff" : "#ccc"};
         }
     }
 `;
