@@ -22,7 +22,7 @@ export const HeaderTitle = styled.h1`
 `
 
 export const Container = styled.div`
-    background-color: #F4F4F4;
+    background-color: #F7F7F7;
     padding: 10px 10px 80px 10px;
     display: flex;
     flex-direction: column;
@@ -50,9 +50,15 @@ export const RouteMap = styled.div`
     border-radius: 10px;
     width: 100%;
     height: 200px;
-    background-image: url("https://cdn.discordapp.com/attachments/1343216457630355550/1432694081716355072/image.png?ex=6901fbd7&is=6900aa57&hm=1b9398f28ea629810016b3ce9abeb734987e0fb9ec0c99813f138b79010eb808&");
+    //background-image: url("https://cdn.discordapp.com/attachments/1343216457630355550/1432694081716355072/image.png?ex=6901fbd7&is=6900aa57&hm=1b9398f28ea629810016b3ce9abeb734987e0fb9ec0c99813f138b79010eb808&");
     background-size: contain;
 `
+
+export const Stat = styled.div`
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+`;
 
 export const StatTitle = styled.h3`
     margin-top: 10px;
@@ -62,6 +68,7 @@ export const StatTitle = styled.h3`
 
 export const StatValue = styled.h3`
     font-size: 14px;
+    color: #5AAAEF;
 `
 
 export const InformationMessage = styled.p`
@@ -85,7 +92,7 @@ export const FinishButton = styled.button`
     color: white;
     position: absolute;
     width: calc(100% - 60px);
-    bottom: 10px;
+    bottom: 15px;
     box-shadow: 4px 4px 13px 0px rgba(171, 171, 171, 0.74);
     -webkit-box-shadow: 4px 4px 13px 0px rgba(171, 171, 171, 0.74);
     -moz-box-shadow: 4px 4px 13px 0px rgba(171, 171, 171, 0.74);

@@ -1,17 +1,15 @@
 import {createBrowserRouter} from "react-router";
-import SignIn from "../pages/signin/SignIn.tsx";
 import Layout from "../widgets/layout/Layout.tsx";
 import WalkFinishPage from "../pages/walk/finish/WalkFinish.tsx";
+import ErrorPage from "@/pages/error/ErrorPage.tsx";
+import NotFoundPage from "@/pages/error/NotFoundPage.tsx";
 
 const router = createBrowserRouter([
     {
         path: "/",
         Component: Layout,
+        ErrorBoundary: ErrorPage,
         children: [
-            {
-                path: "signin",
-                Component: SignIn,
-            },
             {
                 path: "walk",
                 children: [
@@ -20,6 +18,10 @@ const router = createBrowserRouter([
                         Component: WalkFinishPage,
                     }
                 ]
+            },
+            {
+                path: "*",
+                Component: NotFoundPage,
             }
         ]
     }

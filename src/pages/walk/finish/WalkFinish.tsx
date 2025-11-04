@@ -1,7 +1,14 @@
 import * as S from "./styles/walkFinishStyle.ts";
 import Slide from "../../../components/slide/Slide.tsx";
+import {useNavigate} from "react-router";
 
 const WalkFinishPage = () => {
+    const navigate = useNavigate();
+
+    const onFinish = () => {
+        navigate("/");
+    }
+
     return <S.Wrapper>
         <S.Header>
             <S.HeaderTitle>오늘의 산책 리포트</S.HeaderTitle>
@@ -12,14 +19,20 @@ const WalkFinishPage = () => {
 
                 <S.RouteMap />
 
-                <S.StatTitle>산책 시간</S.StatTitle>
-                <S.StatValue>03:21:13</S.StatValue>
+                <S.Stat>
+                    <S.StatTitle>산책 시간</S.StatTitle>
+                    <S.StatValue>03:21:13</S.StatValue>
+                </S.Stat>
 
-                <S.StatTitle>산책 거리</S.StatTitle>
-                <S.StatValue>3.4km</S.StatValue>
+                <S.Stat>
+                    <S.StatTitle>산책 거리</S.StatTitle>
+                    <S.StatValue>3.4km</S.StatValue>
+                </S.Stat>
 
-                <S.StatTitle>소모 칼로리</S.StatTitle>
-                <S.StatValue>132.1kcal</S.StatValue>
+                <S.Stat>
+                    <S.StatTitle>소모 칼로리</S.StatTitle>
+                    <S.StatValue>132.1kcal</S.StatValue>
+                </S.Stat>
 
                 <S.InformationMessage>산책가자가 제공하는 칼로리 정보는 정확하지 않을 수 있으며, 참고용으로 사용하시기를 권장합니다.</S.InformationMessage>
             </S.Card>
@@ -31,7 +44,7 @@ const WalkFinishPage = () => {
                 <Slide label={'분위기'} messages={['한적하다', '적당하다', '시끄럽다']} />
             </S.Card>
         </S.Container>
-        <S.FinishButton>
+        <S.FinishButton onClick={onFinish}>
             종료하기
         </S.FinishButton>
     </S.Wrapper>;
