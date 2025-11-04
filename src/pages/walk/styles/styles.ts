@@ -3,126 +3,197 @@ import styled from "styled-components";
 export const MapContainer = styled.div`
   width: 100vw;
   height: 100vh;
+  // transform: scale(2);
+  // transform-origin: center center;
 `;
 
-// ===== Map Info =====
-export const MapInfo = styled.div`
+export const Card = styled.div`
   position: absolute;
-  width: 378px;
-  height: 238px;
   left: 12px;
+  right: 12px;
   bottom: 34px;
-  background: #ffffff;
+  background: white;
   border-radius: 20px;
-  padding: 16px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  font-family: "Pretendard", sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 10;
 `;
 
-// ===== 텍스트 =====
-export const TimeText = styled.div`
-  position: absolute;
-  width: 118px;
-  height: 28px;
-  left: 19px;
-  top: 27px;
+export const TopRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
 
-  font-family: 'Pretendard', sans-serif;
-  font-weight: 600;
+export const Time = styled.div`
+  font-weight: 700;
   font-size: 32px;
-  line-height: 28px;
-  text-align: center;
-  letter-spacing: -1px;
   color: #000000;
 `;
 
-export const DistanceText = styled.div`
-  position: absolute;
-  width: 66px;
-  height: 28px;
-  left: 45px;
-  top: 82px;
-
-  font-family: 'Pretendard', sans-serif;
-  font-weight: 600;
-  font-size: 26px;
-  line-height: 28px;
-  text-align: center;
-  letter-spacing: -1px;
-  color: #44423F;
-`;
-
-export const RemainingText = styled.div`
-  position: absolute;
-  width: 31px;
-  height: 28px;
-  left: 63px;
-  top: 108.83px;
-
-  font-family: 'Pretendard', sans-serif;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 28px;
-  text-align: center;
-  letter-spacing: -1px;
-  color: #44423F;
-`;
-
-// ===== 버튼 프레임 =====
-export const ButtonFrame = styled.button<{ bgColor?: string; color?: string }>`
+export const Weather = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: center;
   align-items: center;
-  padding: 7px 18px;
-  gap: 10px;
-
-  position: absolute;
-  width: ${(props) => (props.bgColor ? "212px" : "115px")};
-  height: 44px;
-  left: ${(props) => (props.bgColor ? "143px" : "23px")};
-  bottom: 23px;
-
-  background: ${(props) => props.bgColor || "#F2F2F2"};
-  border-radius: 16px;
-  font-family: 'Pretendard', sans-serif;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 28px;
-  color: ${(props) => props.color || "#0A0A0A"};
-  border: none;
-  cursor: pointer;
-`;
-
-// ===== 날씨 프레임 =====
-export const WeatherFrame = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 4px 18px;
-  gap: 10px;
-
-  position: absolute;
-  width: 123px;
-  height: 35px;
-  left: 232px;
-  top: 19px;
-
   background: #ffc267;
   border-radius: 99px;
-  font-family: 'Pretendard', sans-serif;
-  font-weight: 500;
+  padding: 4px 14px;
+  font-weight: 600;
+  font-size: 16px;
+  color: #ffffff;
+`;
+
+export const WeatherIcon = styled.span`
+  margin-right: 6px;
+`;
+
+export const Temp = styled.span``;
+
+export const MiddleRow = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const DistanceBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const Distance = styled.div`
+  font-weight: 600;
+  font-size: 26px;
+  color: #44423f;
+`;
+
+export const Label = styled.div`
+  font-weight: 600;
+  font-size: 18px;
+  color: #44423f;
+`;
+
+export const Divider = styled.div`
+  width: 1px;
+  height: 60px;
+  background-color: #cbc8c8;
+`;
+
+export const StatusBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
   font-size: 12px;
-  line-height: 28px;
   color: #333333;
 `;
 
-// ===== 라인 =====
-export const Line = styled.div`
-  position: absolute;
-  width: 54.68px;
-  height: 0px;
-  left: 147.59px;
-  top: 81.83px;
-  border: 1px solid #CBC8C8;
-  transform: rotate(90deg);
+export const Status = styled.div`
+  font-weight: 500;
 `;
+
+export const Bad = styled.span`
+  color: #f5a623;
+  font-weight: 600;
+`;
+
+export const Good = styled.span`
+  color: #22b14c;
+  font-weight: 600;
+`;
+
+export const BottomRow = styled.div`
+  display: flex;
+  gap: 8px;
+`;
+
+export const StopButton = styled.button`
+  flex: 1;
+  background: #f2f2f2;
+  border: none;
+  border-radius: 16px;
+  padding: 10px 0;
+  font-weight: 600;
+  font-size: 16px;
+  color: #0a0a0a;
+`;
+
+export const EndButton = styled.button`
+  flex: 2;
+  background: #5aaaeF;
+  border: none;
+  border-radius: 16px;
+  padding: 10px 0;
+  font-weight: 600;
+  font-size: 16px;
+  color: #ffffff;
+`;
+
+/* --- 모달 오버레이 (dim 처리) --- */
+export const ModalOverlay = styled.div`
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+`;
+
+export const ModalBox = styled.div`
+  width: 378px;
+  height: 205px;
+  background: #ffffff;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.12);
+  border-radius: 20px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
+export const ModalTitle = styled.div`
+  font-weight: 600;
+  font-size: 24px;
+  color: #181818;
+`;
+
+export const ModalSubText = styled.div`
+  margin-top: 8px;
+  font-weight: 500;
+  font-size: 16px;
+  color: #868686;
+`;
+
+export const ButtonBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+`;
+
+export const CancelButton = styled.button`
+  width: 162px;
+  height: 60px;
+  background: #f2f2f2;
+  border: none;
+  border-radius: 16px;
+  font-size: 20px;
+  font-weight: 500;
+  color: #0a0a0a;
+  cursor: pointer;
+`;
+
+export const ConfirmButton = styled.button`
+  width: 162px;
+  height: 60px;
+  background: #5aaaeF;
+  border: none;
+  border-radius: 16px;
+  font-size: 20px;
+  font-weight: 500;
+  color: #ffffff;
+  cursor: pointer;
+`; 
