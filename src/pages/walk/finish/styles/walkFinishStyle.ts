@@ -22,7 +22,7 @@ export const HeaderTitle = styled.h1`
 `
 
 export const Container = styled.div`
-    background-color: #F4F4F4;
+    background-color: #F7F7F7;
     padding: 10px 10px 80px 10px;
     display: flex;
     flex-direction: column;
@@ -54,6 +54,12 @@ export const RouteMap = styled.div`
     background-size: contain;
 `
 
+export const Stat = styled.div`
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+`;
+
 export const StatTitle = styled.h3`
     margin-top: 10px;
     font-size: 18px;
@@ -62,6 +68,7 @@ export const StatTitle = styled.h3`
 
 export const StatValue = styled.h3`
     font-size: 14px;
+    color: #5AAAEF;
 `
 
 export const InformationMessage = styled.p`
