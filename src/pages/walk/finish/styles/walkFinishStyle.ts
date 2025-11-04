@@ -50,7 +50,7 @@ export const RouteMap = styled.div`
     border-radius: 10px;
     width: 100%;
     height: 200px;
-    background-image: url("https://cdn.discordapp.com/attachments/1343216457630355550/1432694081716355072/image.png?ex=6901fbd7&is=6900aa57&hm=1b9398f28ea629810016b3ce9abeb734987e0fb9ec0c99813f138b79010eb808&");
+    //background-image: url("https://cdn.discordapp.com/attachments/1343216457630355550/1432694081716355072/image.png?ex=6901fbd7&is=6900aa57&hm=1b9398f28ea629810016b3ce9abeb734987e0fb9ec0c99813f138b79010eb808&");
     background-size: contain;
 `
 

@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
     align-items: center;
 `;
 
-export const Container = styled.div`
+export const Container = styled.div<{$showNavigation: boolean}>`
     width: 375px; // iPhone 12 Size
     height: 812px; // iPhone 12 Size
     border-radius: 30px;
@@ -16,7 +16,7 @@ export const Container = styled.div`
     box-sizing: border-box;
     overflow: hidden;
     display: grid;
-    grid-template-rows: 30px 1fr;
+    grid-template-rows: 30px 1fr ${props => props.$showNavigation ? "80px" : 0};
 `
 
 export const Content = styled.div`
