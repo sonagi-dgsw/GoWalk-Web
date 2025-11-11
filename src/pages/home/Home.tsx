@@ -7,7 +7,7 @@ import { HomeProps } from "./types/Home_type";
 import {Link} from "react-router";
 
 const dogInfo:HomeProps = {
-  dogName: "뽀삐 ",
+  dogName: "뽀삐",
   guardianName: "권대형",
   dogGender: true,
   dogBreed: "웰시코기",
