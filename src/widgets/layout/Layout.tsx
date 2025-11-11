@@ -7,6 +7,15 @@ import Navigation from "../navigation/Navigation.tsx";
 const independent_pages = [
     "/walk",
     "/walk/finish",
+    "/signin",
+    "/member_emailaddress",
+    "/member_certification",
+    "/member_name",
+    "/member_petname",
+    "/member_petsort",
+    "/member_petage",
+    "/member_petweight",
+    "/member_gender"
 ]
 
 const Layout = () => {
