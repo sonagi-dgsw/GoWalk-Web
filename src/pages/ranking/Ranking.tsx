@@ -44,14 +44,14 @@ const Ranking: React.FC = () => {
 
   return (
     <div className="container">
-    <div className="header">
+      <div className="header">
         <Link to={"/"} className="tab">
-            <img className="logo" src={logo} alt="로고" />
+          <img className="logo" src={logo} alt="로고" />
         </Link>
         <div className="tab">
-            <img className="setting" src={setting} alt="설정" />
+          <img className="setting" src={setting} alt="설정" />
         </div>
-    </div>
+      </div>
       <div className="r_header">
         <div className="tabs">
           <div
