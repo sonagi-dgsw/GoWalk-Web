@@ -23,6 +23,7 @@ export const InputFormtext = styled.input`
   margin-bottom: 12px;
   border: none;
   width: 346px;
+  background: none;
   &::placeholder {
     color: #b8b8b8;
   }
