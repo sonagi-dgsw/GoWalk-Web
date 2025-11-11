@@ -5,7 +5,7 @@ export const Gowalk = styled.img`
   width: 180px;
   margin-bottom: 90.09px;
   margin-left: 111px;
-    height: 100%;
+    height: fit-content;
 `;
 
 export const InputFormtitle = styled.h1`
@@ -47,24 +47,9 @@ export const AskAccount = styled.h1`
 `;
 
 export const InputFormtext = styled.input`
-  font-size: 18px;
+  font-size: 20px;
   color: #181818;
   margin-left: 15px;
-  font-weight: 500;
-  line-height: 1;
-  margin-bottom: 1.3vh;
-  border: none;
-  width: 346px;
-  background: none;
-  &::placeholder {
-    color: #b8b8b8;
-  }
-`;
-
-export const InputFormtext = styled.input`
-  font-size: 5vw;
-  color: #181818;
-  margin-left: 8vw;
   font-weight: 500;
   line-height: 1;
   margin-bottom: 1.3vh;

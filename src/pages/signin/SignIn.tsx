@@ -1,11 +1,12 @@
 import * as S from "./styles/styles.ts";
 import { Link } from "react-router-dom";
+import logo from "@assets/Gowalk.png";
 
 const SignIn = () => {
   return (
     <>
       <S.Gowalk
-        src="src/pages/img/스크린샷 2025-10-15 오후 4.48.05.png"
+        src={logo}
         alt=""
       ></S.Gowalk>
       <S.InputFormtitle>이메일주소</S.InputFormtitle>
