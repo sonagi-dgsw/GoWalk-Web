@@ -12,6 +12,7 @@ const RankingItem: React.FC<IRankingItemProps> = ({item, renderValue}) => {
         <div className={`list-item ${item.isMe && "me"}`}>
             <div className="info">
                 {item.isMe && <div className="me-indicator" />}
+                <h3 className="rank_number">{item.rank}</h3>
                 <div className="avatar">
                     <img
                         src={guest}

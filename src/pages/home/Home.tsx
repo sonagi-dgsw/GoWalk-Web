@@ -4,6 +4,7 @@ import logo from "./images/산책가자.png";
 import setting from "./images/Vector.png";
 import dog from "./images/dog.png";
 import { HomeProps } from "./types/Home_type";
+import {Link} from "react-router";
 
 const dogInfo:HomeProps = {
   dogName: "뽀삐 ",
@@ -21,9 +22,9 @@ const Home: React.FC = () => {
   return (
     <div className="container">
         <div className="header">
-            <div className="tab">
+            <Link to={"/"} className="tab">
                 <img className="logo" src={logo} alt="로고" />
-            </div>
+            </Link>
             <div className="tab">
                 <img className="setting" src={setting} alt="설정" />
             </div>

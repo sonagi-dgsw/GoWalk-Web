@@ -1,23 +1,11 @@
-/* 기본 스타일 */
-body {
-  font-family: "Pretendard", sans-serif;
-  background: #f9fafb;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-}
-
 .container {
   background: #ffffff;
-  border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   width: 375px;
-  height: 812px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 /* 헤더 */
@@ -58,7 +46,7 @@ body {
 
 .name {
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 500;
   margin: 0 0 4px;
 }
 

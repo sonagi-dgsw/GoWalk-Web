@@ -1,23 +1,11 @@
-/* 기본 스타일 */
-body {
-  font-family: "Pretendard", sans-serif;
-  background: #f9fafb;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-}
-
 .container {
   background: #ffffff;
-  border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   width: 375px;
-  height: 812px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 /* 헤더 & 탭 */
@@ -91,6 +79,10 @@ body {
   left: -10px;
 }
 
+.rank_number {
+  font-size: 14px;
+}
+
 .avatar {
   width: 70px;
   height: 70px;
@@ -116,10 +108,10 @@ body {
 /* 배지 */
 .badge {
   position: absolute;
-  right: 10px;
-  bottom: 105px;
-  width: 24px;
-  height: 24px;
+  right: 5px;
+  bottom: 95px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
   color: white;
   font-size: 18px;
@@ -127,11 +119,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid white;
 }
 
 .badge-1 {
   background-color: #f97316; /* 주황색 */
+  right: -7px;
 }
 
 .badge-2 {
@@ -160,7 +152,7 @@ body {
   border-bottom: 1px solid #ccc;
 }
 
-.list-item.me {
+.list-item.me:first-child {
   border-bottom: 1.5px solid #5AAAEF;
   background-color: #eff8ff;
   position: sticky;

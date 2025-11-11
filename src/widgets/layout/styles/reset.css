@@ -26,6 +26,13 @@ footer, header, hgroup, menu, nav, section {
     display: block;
 }
 body {
+    font-family: "Pretendard", sans-serif;
+    background: #f9fafb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
     line-height: 1;
 }
 ol, ul {

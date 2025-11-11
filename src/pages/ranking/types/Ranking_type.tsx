@@ -4,4 +4,5 @@ export type RankingProps = {
   distance: number;
   time: number;
   isMe: boolean;
+  rank: number;
 };
