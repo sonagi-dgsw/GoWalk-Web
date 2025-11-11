@@ -17,6 +17,10 @@ const dogInfo:HomeProps = {
   dogBreed: "웰시코기",
   dogAge: 4,
   dogWeight: 12,
+  dayWalkTime: 49,
+  dayWalkDistance: 3.7,
+  useKcal: 300,
+  consecutiveDays: 8,
 };
 
 const Home: React.FC = () => {
@@ -46,6 +50,32 @@ const Home: React.FC = () => {
                 <div className="dog_age"><img src={age} alt="나이" />나이  {dogInfo.dogAge}살</div>
                 <div className="dog_weight"><img src={weight} alt="체중" />체중  {dogInfo.dogWeight}kg</div>
             </div>
+        </div>
+        <div className="bottom_box">
+            <div className="today">
+                <div className="timebox">
+                    <div className="today_text">오늘 산책한 시간</div>
+                    <div className="time">{dogInfo.dayWalkTime} 분</div>
+                </div>
+                <div className="distancebox">
+                    <div className="today_text">오늘 산책한 거리</div>
+                    <div className="distance">{dogInfo.dayWalkDistance} km</div>
+                </div>
+                <div className="kcalbox">
+                    <div className="today_text">소모한 칼로리</div>
+                    <div className="kcal">{dogInfo.useKcal} kcal</div>
+                </div>
+            </div>
+            <div className="consecutive_days_box">
+                <div className="consecutive_days">{dogInfo.consecutiveDays} 일</div>
+                <div className="consecutive_days_text">연속으로 산책했어요</div>
+            </div>
+        </div>
+        <div className="walk_button">
+            <button className="button">산책하기</button>
+        </div>
+        <div className="week_record">
+            
         </div>
     </div>
   );
