@@ -102,7 +102,7 @@ const Ranking: React.FC = () => {
       </div>
 
       <div className="list">
-          <RankingItem item={myRanking!} renderValue={renderValue} />
+          {myRanking && <RankingItem item={myRanking} renderValue={renderValue} />}
         {sortedData.map((item) => (
           <RankingItem key={item.id} item={item} renderValue={renderValue} />
         ))}
