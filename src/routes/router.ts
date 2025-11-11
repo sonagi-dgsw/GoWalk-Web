@@ -9,6 +9,8 @@ import Member_name from "@/pages/member/Member_name.tsx";
 import Member_petname from "@/pages/member/Member_petname.tsx";
 import Member_petsort from "@/pages/member/Member_petsort.tsx";
 import Member_petage from "@/pages/member/Member_petage.tsx";
+import Member_petweight from "../pages/member/Member_petweight.tsx";
+import Member_gender from "../pages/member/Member_gender.tsx";
 
 import ErrorPage from "@/pages/error/ErrorPage.tsx";
 import NotFoundPage from "@/pages/error/NotFoundPage.tsx";
@@ -71,6 +73,14 @@ const router = createBrowserRouter([
                 path: "/member_petage",
                 Component: Member_petage,
             },
+            {
+                path: "/member_petweight",
+                Component: Member_petweight,
+            },
+            {
+                path:"/member_gender",
+                Component:Member_gender
+            }
             {
                 path: "*",
                 Component: NotFoundPage,

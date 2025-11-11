@@ -39,7 +39,7 @@ const Member_emailaddress = () => {
         인증번호 요청
       </S.Button>
       <S.AskAccount>
-        이미 계정이 있으신가요?{" "}
+        이미 계정이 있으신가요? {" "}
         <Link to="/signin" style={{ textDecoration: "none" }}>
           <S.Domember>로그인하기</S.Domember>
         </Link>

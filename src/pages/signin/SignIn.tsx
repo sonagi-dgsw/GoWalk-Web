@@ -19,7 +19,7 @@ const SignIn = () => {
   return (
     <form>
       <S.Gowalk
-        src="/Users/ghkdrudals/Desktop/프로그래밍/WEB/GoWalk-Web/src/img/스크린샷 2025-10-15 오후 4.48.05.png"
+        src="src/img/Gowalk.png"
         alt=""
       ></S.Gowalk>
       <S.InputFormtitle>이메일주소</S.InputFormtitle>
@@ -37,7 +37,7 @@ const SignIn = () => {
       <S.Button >로그인</S.Button>
       <Link to="/member_emailaddress" style={{ textDecoration: "none" }}>
         <S.AskAccount>
-          계정이 없으신가요? <S.Domember>회원가입하기</S.Domember>
+          계정이 없으신가요?  <S.Domember>회원가입하기</S.Domember>
         </S.AskAccount>
       </Link>
     </form>

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 import { useState } from "react"
 import plus from "/Users/ghkdrudals/Desktop/프로그래밍/WEB/GoWalk-Web/src/img/plus.png"
 import minus from "/Users/ghkdrudals/Desktop/프로그래밍/WEB/GoWalk-Web/src/img/minus.png"
-const Member_petage=()=>{
+const Member_petweight=()=>{
     const [value,setValue]=useState(0);
     const onClickPlus=()=>{
         setValue(value+1);
@@ -14,8 +14,17 @@ const Member_petage=()=>{
             setValue(value-1);
         }
     }
+    const navigate=useNavigate();
+    const onSubmit=(e:any)=>{
+        if (value>0) {
+            navigate("/member_gender")
+        }
+        else{
+            e.preventDefault();
+        }
+    }
     return(
-        <>
+        <form onSubmit={onSubmit}>
         <S.Title>반려견 정보</S.Title>
         <S.InputFormtitle>반려견 몸무게</S.InputFormtitle>
         <S.Div>
@@ -28,10 +37,10 @@ const Member_petage=()=>{
         <S.ErrorCover>
         <S.Errortext></S.Errortext>
         </S.ErrorCover>
-        <S.Button>다음</S.Button>
+        <S.Button type="submit">다음</S.Button>
         <Link to="/member_petage"><S.Before>이전으로</S.Before></Link>
-        </>
+        </form>
     )
 }
 
-export default Member_petage;
+export default Member_petweight;

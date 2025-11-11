@@ -51,7 +51,7 @@ const Member_certification = () => {
         <S.Line></S.Line>
         <S.Errortext>{errors.certification?.message?.toString()}</S.Errortext>
         <S.Time
-          style={errors.certification ? { top: "410px" } : { bottom: "385px" }}
+          style={errors.certification ? { top: "435px" } : { top: "410px" }}
         >
           {minute}:{second}
         </S.Time>

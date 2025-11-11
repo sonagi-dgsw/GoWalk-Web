@@ -7,7 +7,7 @@ export const Gowalk = styled.img`
   margin-left: 111px;
 `;
 export const InputFormtitle = styled.h1`
-  font-size: 16px;
+  font-size: 14px;
   color: #888888;
   font-weight: 600;
   line-height: 1;
@@ -16,7 +16,7 @@ export const InputFormtitle = styled.h1`
 `;
 
 export const InputFormtext = styled.input`
-  font-size: 20px;
+  font-size: 18px;
   color: #181818;
   font-weight: 500;
   line-height: 1;
@@ -44,36 +44,37 @@ export const Button = styled.button`
   border-radius: 16px;
   color: white;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 18px;
   border: none;
   margin-left: 15px;
-  margin-top: 16px;
+  margin-top: 12px;
+  cursor: pointer;
 `;
 
 export const AskAccount = styled.h1`
-  margin-top: 1vh;
-  font-size: 4vw;
+  margin-top: 16px;
+  font-size: 14px;
   color: #888888;
   font-weight: 600;
-  margin-left: 36vw;
+  margin-left: 155px;
 `;
 
 export const Domember = styled.span`
-  font-size: 4vw;
+  font-size: 14px;
   color: #5aaaef;
   text-decoration: underline;
 `;
 
 export const Title = styled.h1`
   font-weight: 700;
-  font-size: 32px;
+  font-size: 30px;
   text-align: center;
-  margin-top: 21vh;
-  margin-bottom: 8.5vh;
+  margin-top: 186px;
+  margin-bottom: 75px;
 `;
 
 export const Time = styled.h1`
-  font-size: 20px;
+  font-size: 18px;
   color: #5aaaef;
   position: absolute;
   top:385px;
@@ -81,23 +82,23 @@ export const Time = styled.h1`
 `;
 
 export const Before = styled.h1`
-  font-size: 16px;
+  font-size: 14px;
   color: #888888;
   margin-left: 15px;
   text-decoration: underline;
   decoration-color: #888888;
-  margin-top: 1vh;
+  margin-top: 8px;
   line-height: 3.2vh;
 `;
 export const ErrorCover = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.2vh;
+  gap: 0.8px;
   margin-bottom: 28px;
 `;
 export const Errortext = styled.h1`
   margin-left: 15px;
-  font-size: 16px;
+  font-size: 14px;
   margin-top: 0;
   font-weight: 400;
   margin-bottom: 0;
@@ -105,7 +106,7 @@ export const Errortext = styled.h1`
 `;
 
 export const Select=styled.select`
-    font-size:16px;
+    font-size:14px;
     color:#B8B8B8;
     padding-top:12px;
     padding-bottom:12px;
@@ -137,7 +138,7 @@ font-size:16px;
 `
 
 export const Body=styled.h1`
-  font-size:20px;
+  font-size:18px;
   color:#181818;
   font-weight:500;
   text-align:center;
@@ -156,4 +157,34 @@ export const Minus=styled.img`
 `
 export const BodyCover=styled.div`
 width:130px;
+`
+
+export const GenderCover=styled.div`
+display:flex;
+flex-direction:row;
+gap:12px;
+margin-bottom:24px;
+margin-left:20px;
+`
+
+export const GenderBackground=styled.div`
+  background-color:#EFEFEF;
+  border-radius:16px;
+  width:160px;
+  height:160px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+`
+
+export const Gender=styled.img`
+  height:37px;
+`
+
+export const GenderText=styled.h1`
+  font-size:18px;
+  color:#B8B8B8;
+  font-weight:600;
 `

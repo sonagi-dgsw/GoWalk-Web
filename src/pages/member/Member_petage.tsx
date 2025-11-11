@@ -14,8 +14,17 @@ const Member_petage=()=>{
             setValue(value-1);
         }
     }
+    const navigate=useNavigate();
+    const onSubmit=(e:any)=>{
+        if (value>0) {
+            navigate("/member_petweight")
+        }
+        else{
+            e.preventDefault();
+        }
+    }
     return(
-        <>
+        <form onSubmit={onSubmit}>
         <S.Title>반려견 정보</S.Title>
         <S.InputFormtitle>견종</S.InputFormtitle>
         <S.Div>
@@ -28,9 +37,9 @@ const Member_petage=()=>{
         <S.ErrorCover>
         <S.Errortext></S.Errortext>
         </S.ErrorCover>
-        <S.Button>다음</S.Button>
+        <S.Button type="submit">다음</S.Button>
         <Link to="/member_petsort"><S.Before>이전으로</S.Before></Link>
-        </>
+        </form>
     )
 }
 

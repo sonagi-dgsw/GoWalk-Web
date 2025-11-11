@@ -31,13 +31,13 @@ const Member_petsort = () => {
         <>
         <S.Title>반려견 정보</S.Title>
         <S.InputFormtitle style={isFocused ? {color:"#5AAAEF"} : {color:"#888888"}}>견종</S.InputFormtitle>
-        <S.Select onFocus={onFocus} onBlur={onBlur} onChange={onChange} value={petsort} style={iserrors ? {borderColor:"red"} : {borderColor:"#fB8B8B8"}}>
+        <S.Select onFocus={onFocus} onBlur={onBlur} onChange={onChange} value={petsort} style={iserrors ?{borderColor:"red"} :  petsort==="error"? {borderColor:"#fB8B8B8"}:{borderColor:"#fB8B8B8",color:"black"}}>
             <option value="error">견종을 선택해주세요</option>
-            <option>말티즈</option>
-            <option>푸들</option>
-            <option>포매라니안</option>
-            <option>시추</option>
-            <option>비숑 프리제</option>
+            <option value="말티즈">말티즈</option>
+            <option value="푸들">푸들</option>
+            <option value="포메라니안">포매라니안</option>
+            <option value="시추">시추</option>
+            <option value="비숑 프리제">비숑 프리제</option>
         </S.Select>
         <S.ErrorCover>
         <S.Errortext style={{marginTop:"5px"}}>{errors}</S.Errortext>
