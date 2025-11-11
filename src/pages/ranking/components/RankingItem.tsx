@@ -1,4 +1,5 @@
 import guest from "../images/guest.png";
+import React from "react";
 import {RankingProps} from "../types/Ranking_type.tsx";
 
 interface IRankingItemProps {
