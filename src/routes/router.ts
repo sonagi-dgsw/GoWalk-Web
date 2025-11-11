@@ -80,13 +80,13 @@ const router = createBrowserRouter([
             {
                 path:"/member_gender",
                 Component:Member_gender
-            }
+            },
             {
                 path: "*",
                 Component: NotFoundPage,
             },
         ]
-    }
+    },
 ])
 
 export default router;

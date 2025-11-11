@@ -9,11 +9,7 @@ const SignIn = () => {
     setError,
     handleSubmit,
     formState: { errors },
-  } = useForm({
-    defaultValues: {
-      email: "@gmail.com",
-    },
-  });
+  } = useForm();
   const navigate = useNavigate();
   const onValid = (data: any) => {};
   const onSubmit = () => {

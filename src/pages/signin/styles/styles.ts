@@ -6,6 +6,7 @@ export const Gowalk = styled.img`
   margin-bottom: 90.09px;
   margin-left: 111px;
 `;
+
 export const InputFormtitle = styled.h1`
   font-size: 14px;
   color: #888888;
@@ -52,7 +53,7 @@ export const InputFormtext = styled.input`
   line-height: 1;
   margin-bottom: 1.3vh;
   border: none;
-  width: 86vw;
+  width: 346px;
   &::placeholder {
     color: #b8b8b8;
   }
