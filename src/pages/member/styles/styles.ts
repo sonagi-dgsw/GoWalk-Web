@@ -76,9 +76,7 @@ export const Title = styled.h1`
 export const Time = styled.h1`
   font-size: 18px;
   color: #5aaaef;
-  position: absolute;
-  top:385px;
-  left:585px;
+  margin: 5px 0 0 15px;
 `;
 
 export const Before = styled.h1`
@@ -94,7 +92,7 @@ export const ErrorCover = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.8px;
-  margin-bottom: 28px;
+  margin-bottom: 5px;
 `;
 export const Errortext = styled.h1`
   margin-left: 15px;

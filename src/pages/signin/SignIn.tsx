@@ -16,8 +16,11 @@ const SignIn = () => {
   });
   const navigate = useNavigate();
   const onValid = (data: any) => {};
+  const onSubmit = () => {
+      navigate("/");
+  }
   return (
-    <form>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <S.Gowalk
         src="src/img/Gowalk.png"
         alt=""

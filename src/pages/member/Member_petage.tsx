@@ -1,9 +1,9 @@
-import * as S from "/Users/ghkdrudals/Desktop/프로그래밍/WEB/GoWalk-Web/src/pages/member/styles/styles.ts";
+import * as S from "./styles/styles.ts";
 import { Link } from "react-router";
 import { useNavigate } from "react-router";
 import { useState } from "react"
-import plus from "/Users/ghkdrudals/Desktop/프로그래밍/WEB/GoWalk-Web/src/img/plus.png"
-import minus from "/Users/ghkdrudals/Desktop/프로그래밍/WEB/GoWalk-Web/src/img/minus.png"
+import plus from "../../img/plus.png"
+import minus from "../../img/minus.png"
 const Member_petage=()=>{
     const [value,setValue]=useState(0);
     const onClickPlus=()=>{

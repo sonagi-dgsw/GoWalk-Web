@@ -1,4 +1,4 @@
-import * as S from "/Users/ghkdrudals/Desktop/프로그래밍/WEB/GoWalk-Web/src/pages/member/styles/styles.ts";
+import * as S from "../../pages/member/styles/styles.ts";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
@@ -53,7 +53,7 @@ const Member_certification = () => {
         <S.Time
           style={errors.certification ? { top: "435px" } : { top: "410px" }}
         >
-          {minute}:{second}
+          {minute}:{second.toString().padStart(2, "0")}
         </S.Time>
       </S.ErrorCover>
       <S.Button type="submit">

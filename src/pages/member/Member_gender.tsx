@@ -1,9 +1,11 @@
-import * as S from "/Users/ghkdrudals/Desktop/프로그래밍/WEB/GoWalk-Web/src/pages/member/styles/styles.ts";
+import * as S from "./styles/styles.ts";
 import { Link } from "react-router";
 import { useState } from "react";
+import {useNavigate} from "react-router-dom";
 const Member_gender=()=>{
     const [clickmale,setClickmale]=useState(false);
     const [clickfemale,setClickfemale]=useState(false);
+    const navigate = useNavigate();
     const onClickMale=()=>{
         setClickmale(true);
         setClickfemale(false);
@@ -16,6 +18,7 @@ const Member_gender=()=>{
         if (clickmale===false && clickfemale===false){
             e.preventDefault();
         }
+        navigate("/");
     }
     return(
         <form onSubmit={onSubmit}>

@@ -34,6 +34,7 @@ export const Button = styled.button`
   border: none;
   margin-top: 16px;
   margin-left: 15px;
+  cursor: pointer;
 `;
 export const AskAccount = styled.h1`
   margin-top: 8px;
