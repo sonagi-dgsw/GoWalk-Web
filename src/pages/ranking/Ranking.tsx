@@ -6,14 +6,6 @@ import RankingItem from "./components/RankingItem.tsx";
 import logo from "../home/images/산책가자.png";
 import setting from "../home/images/Vector.png";
 
-const myRanking: RankingProps = {
-    id: "권대형",
-    name: "권대형입니다.",
-    distance: 999.2,
-    time: 1333,
-    isMe: true
-}
-
 const rankingData: RankingProps[] = [
   { id: "권대형 좋아해", name: "광진", distance: 34.0, time: 15, isMe: false },
   { id: "권대형 사랑해", name: "광진동", distance: 35.0, time: 14, isMe: false },
@@ -25,6 +17,13 @@ const rankingData: RankingProps[] = [
   { id: "大型最高", name: "길동", distance: 2.7, time: 12, isMe: false },
   { id: "大型最高", name: "길동", distance: 2.7, time: 12, isMe: false },
   { id: "大型最高", name: "길동", distance: 2.7, time: 12, isMe: false },
+    {
+        id: "권대형",
+        name: "권대형입니다.",
+        distance: 999.2,
+        time: 1333,
+        isMe: true
+    }
 ];
 
 const Ranking: React.FC = () => {
@@ -36,6 +35,7 @@ const Ranking: React.FC = () => {
 
   const top3 = sortedData.slice(0, 3);
   const others = sortedData.slice(3);
+  const myRanking = sortedData.find(item => item.isMe);
 
   const renderValue = (item: RankingProps) =>
     mode === "distance" ? `${item.distance.toFixed(1)}km` : `${item.time}시간`;
