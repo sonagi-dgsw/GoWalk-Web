@@ -22,7 +22,6 @@ body {
 
 /* 헤더 */
 .header {
-  border-bottom: 1px solid #f1f5f9;
   padding: 16px;
   display: flex;
   align-items: center;

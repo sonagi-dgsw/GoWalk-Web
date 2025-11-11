@@ -3,4 +3,5 @@ export type RankingProps = {
   name: string;
   distance: number;
   time: number;
+  isMe: boolean;
 };
