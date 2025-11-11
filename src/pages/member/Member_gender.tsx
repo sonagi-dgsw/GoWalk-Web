@@ -26,11 +26,11 @@ const Member_gender=()=>{
         <S.InputFormtitle>성별</S.InputFormtitle>
         <S.GenderCover>
             <S.GenderBackground onClick={onClickMale} style={clickmale ? {backgroundColor:"#85CCFF"}:{}}>
-                <S.Gender src={clickmale ? "src/img/onclickmale.png":"src/img/male.png"}></S.Gender>
+                <S.Gender src={clickmale ? "src/assets/onclickmale.png":"src/assets/male.png"}></S.Gender>
                 <S.GenderText style={clickmale ? {color: "white"} : {}}>수컷</S.GenderText>
             </S.GenderBackground>
             <S.GenderBackground onClick={onClickFemale} style={clickfemale ? {backgroundColor:"#ECB3FF"}:{}}>
-                <S.Gender src={clickfemale ? "src/img/onclickfemale.png":"src/img/female.png"} style={{height:"39px"}}></S.Gender>
+                <S.Gender src={clickfemale ? "src/assets/onclickfemale.png":"src/assets/female.png"} style={{height:"39px"}}></S.Gender>
                 <S.GenderText style={clickfemale ? {color: "white"} : {}}>암컷</S.GenderText>
             </S.GenderBackground>
         </S.GenderCover>

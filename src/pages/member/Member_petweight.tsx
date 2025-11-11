@@ -6,6 +6,7 @@ import plus from "@assets/plus.png"
 import minus from "@assets/minus.png"
 
 const Member_petweight=()=>{
+    console.log(plus)
     const [value,setValue]=useState(0);
     const onClickPlus=()=>{
         setValue(value+1);
