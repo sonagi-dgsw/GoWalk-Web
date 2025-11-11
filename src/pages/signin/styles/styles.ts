@@ -47,7 +47,7 @@ export const AskAccount = styled.h1`
 `;
 
 export const InputFormtext = styled.input`
-  font-size: 20px;
+  font-size: 18px;
   color: #181818;
   margin-left: 15px;
   font-weight: 500;

@@ -35,7 +35,7 @@ export const Line = styled.hr`
     line-height: 1;
     margin-top: 0px;
     margin-left: 15px;
-    backgroundColor:"#B8B8B8";
+    background-color:"#B8B8B8";
 `;
 
 export const Button = styled.button`
@@ -137,16 +137,16 @@ export const Div=styled.div`
 `
 
 export const Body=styled.h1`
-    font-size:18px;
-    color:#181818;
-    font-weight:500;
-    text-align:center;
+  font-size:20px;
+  color:#181818;
+  font-weight:500;
+  text-align:center;
 `
 
 export const Plus=styled.img`
-    width:10.59px;
-    height:10.59px;
-    padding:20.7px;
+  width:10.59px;
+  height:10.59px;
+  padding:20.7px;
 `
 
 export const Minus=styled.img`
@@ -156,36 +156,4 @@ export const Minus=styled.img`
 `
 export const BodyCover=styled.div`
 width:130px;
-`
-
-export const GenderCover=styled.div`
-display:flex;
-flex-direction:row;
-gap:12px;
-margin-bottom:24px;
-margin-left:20px;
-`
-
-export const GenderBackground=styled.div`
-  background-color:#EFEFEF;
-  border-radius:16px;
-    cursor: pointer;
-  width:160px;
-  height:160px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:9px;
-`
-
-export const Gender=styled.img`
-  height:37px;
-    width: auto;
-`
-
-export const GenderText=styled.h1`
-  font-size:18px;
-  color:#B8B8B8;
-  font-weight:600;
 `
