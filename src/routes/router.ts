@@ -4,6 +4,7 @@ import WalkFinishPage from "@/pages/walk/finish/WalkFinish.tsx";
 import ErrorPage from "@/pages/error/ErrorPage.tsx";
 import NotFoundPage from "@/pages/error/NotFoundPage.tsx";
 import Walk from "@/pages/walk/Walk.tsx";
+import Ranking from "@/pages/ranking/Ranking.tsx";
 
 const router = createBrowserRouter([
     {
@@ -11,6 +12,10 @@ const router = createBrowserRouter([
         Component: Layout,
         ErrorBoundary: ErrorPage,
         children: [
+            {
+                path: "ranking",
+                Component: Ranking,
+            },
             {
                 path: "walk",
                 children: [
