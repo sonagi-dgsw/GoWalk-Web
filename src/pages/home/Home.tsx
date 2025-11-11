@@ -4,7 +4,11 @@ import logo from "./images/산책가자.png";
 import setting from "./images/Vector.png";
 import dog from "./images/dog.png";
 import { HomeProps } from "./types/Home_type";
+import breed from "./images/emoji/species.png";
+import age from "./images/emoji/age.png";
+import weight from "./images/emoji/weight.png";
 import {Link} from "react-router";
+
 
 const dogInfo:HomeProps = {
   dogName: "뽀삐",
@@ -38,9 +42,9 @@ const Home: React.FC = () => {
                         (보호자 {dogInfo.guardianName})
                     </div>
                 </div>
-                <div className="dog_breed">견종  {dogInfo.dogBreed}</div>
-                <div className="dog_age">나이  {dogInfo.dogAge}살</div>
-                <div className="dog_weight">체중  {dogInfo.dogWeight}kg</div>
+                <div className="dog_breed"><img src={breed} alt="견종 이모지" />견종  {dogInfo.dogBreed}</div>
+                <div className="dog_age"><img src={age} alt="나이" />나이  {dogInfo.dogAge}살</div>
+                <div className="dog_weight"><img src={weight} alt="체중" />체중  {dogInfo.dogWeight}kg</div>
             </div>
         </div>
     </div>
