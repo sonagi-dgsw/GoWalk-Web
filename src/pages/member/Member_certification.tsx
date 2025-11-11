@@ -1,4 +1,4 @@
-import * as S from "../../pages/member/styles/styles.ts";
+import * as S from "@/pages/member/styles/styles.ts";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
