@@ -1,17 +1,5 @@
-/* 기본 스타일 */
-body {
-  font-family: "Pretendard", sans-serif;
-  background: #f9fafb;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-}
-
 .container {
   background: #ffffff;
-  border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   width: 375px;
   overflow: hidden;
