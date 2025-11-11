@@ -22,6 +22,7 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
 
+    "jsx": "react-jsx",
     "paths": {
       "@/*": ["./src/*"],
       "@assets/*": ["./src/assets/*"]

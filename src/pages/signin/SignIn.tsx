@@ -6,12 +6,9 @@ import { useNavigate } from "react-router-dom";
 const SignIn = () => {
   const {
     register,
-    setError,
     handleSubmit,
-    formState: { errors },
   } = useForm();
   const navigate = useNavigate();
-  const onValid = (data: any) => {};
   const onSubmit = () => {
       navigate("/");
   }
