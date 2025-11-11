@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 const Member_certification = () => {
+    const [isFocused, setIsFocused] = useState(false);
   const {
     register,
     handleSubmit,
@@ -32,24 +33,30 @@ const Member_certification = () => {
   const onValid = (data: any) => {
     navigate("/member_name");
   };
+  const onFocus = () => {
+    setIsFocused(true);
+  }
+    const onBlur = () => {
+    setIsFocused(false);
+    }
   return (
     <form onSubmit={handleSubmit(onValid)}>
-      <S.Title>회원가입</S.Title>
-      <S.InputFormtitle>인증번호</S.InputFormtitle>
+      <S.Title >회원가입</S.Title>
+      <S.InputFormtitle style={isFocused ? {color:"#5AAAEF"} : {color:"#888888"}}>인증번호</S.InputFormtitle>
       <S.InputFormtext
         {...register("certification", { required: "인증번호를 입력해주세요" })}
         placeholder="인증번호를 입력해주세요"
-      ></S.InputFormtext>
+      onFocus={onFocus} onBlur={onBlur}></S.InputFormtext>
       <S.ErrorCover>
         <S.Line></S.Line>
         <S.Errortext>{errors.certification?.message?.toString()}</S.Errortext>
         <S.Time
-          style={errors.certification ? { bottom: "51vh" } : { bottom: "53vh" }}
+          style={errors.certification ? { top: "410px" } : { bottom: "385px" }}
         >
           {minute}:{second}
         </S.Time>
       </S.ErrorCover>
-      <S.Button style={{ fontSize: "5vw" }} type="submit">
+      <S.Button type="submit">
         다음
       </S.Button>
       <Link to="/member_emailaddress">

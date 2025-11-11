@@ -8,6 +8,7 @@ import Member_certification from "@/pages/member/Member_certification.tsx";
 import Member_name from "@/pages/member/Member_name.tsx";
 import Member_petname from "@/pages/member/Member_petname.tsx";
 import Member_petsort from "@/pages/member/Member_petsort.tsx";
+import Member_petage from "@/pages/member/Member_petage.tsx";
 
 import ErrorPage from "@/pages/error/ErrorPage.tsx";
 import NotFoundPage from "@/pages/error/NotFoundPage.tsx";
@@ -43,8 +44,8 @@ const router = createBrowserRouter([
                 ]
             },
             {
-                path: "*",
-                Component: NotFoundPage,
+                path: "/signin",
+                Component: SignIn,
             },
             {
                 path: "/member_emailaddress",
@@ -65,6 +66,14 @@ const router = createBrowserRouter([
             {
                 path: "/member_petsort",
                 Component: Member_petsort,
+            },
+            {
+                path: "/member_petage",
+                Component: Member_petage,
+            },
+            {
+                path: "*",
+                Component: NotFoundPage,
             },
         ]
     }

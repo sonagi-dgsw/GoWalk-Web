@@ -32,7 +32,7 @@ export const Button = styled.button`
   font-weight: 700;
   font-size: 20px;
   border: none;
-  margin-top: 44px;
+  margin-top: 16px;
   margin-left: 15px;
 `;
 export const AskAccount = styled.h1`
@@ -44,9 +44,9 @@ export const AskAccount = styled.h1`
 `;
 
 export const InputFormtext = styled.input`
-  font-size: 5vw;
+  font-size: 20px;
   color: #181818;
-  margin-left: 8vw;
+  margin-left: 15px;
   font-weight: 500;
   line-height: 1;
   margin-bottom: 1.3vh;

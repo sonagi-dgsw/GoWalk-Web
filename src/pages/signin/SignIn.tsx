@@ -34,7 +34,7 @@ const SignIn = () => {
         placeholder="비밀번호를 입력해주세요"
       ></S.InputFormtext>
       <S.Line></S.Line>
-      <S.Button style={{ fontSize: "5vw" }}>로그인</S.Button>
+      <S.Button >로그인</S.Button>
       <Link to="/member_emailaddress" style={{ textDecoration: "none" }}>
         <S.AskAccount>
           계정이 없으신가요? <S.Domember>회원가입하기</S.Domember>
