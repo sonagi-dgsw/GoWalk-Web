@@ -136,5 +136,7 @@ img {
   width: 18px;
   height: 18px;
   margin-right: 4px;
-  padding-top: 2px;
+  margin-bottom: 2px;
+  vertical-align: middle;
+  align-items: baseline
 }
