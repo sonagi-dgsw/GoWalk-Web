@@ -9,6 +9,8 @@ import age from "./images/emoji/age.png";
 import weight from "./images/emoji/weight.png";
 import {Link} from "react-router";
 
+import React from "react";
+import WalkRecord from "./components/WalkRecord";
 
 const dogInfo:HomeProps = {
   dogName: "뽀삐",
@@ -75,7 +77,7 @@ const Home: React.FC = () => {
             <button className="button">산책하기</button>
         </div>
         <div className="week_record">
-            
+            <WalkRecord />
         </div>
     </div>
   );
