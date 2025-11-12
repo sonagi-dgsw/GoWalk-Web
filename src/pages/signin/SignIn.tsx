@@ -2,6 +2,7 @@ import * as S from "./styles/styles.ts";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import logo from "@assets/Gowalk.png";
 
 const SignIn = () => {
   const {
@@ -15,7 +16,7 @@ const SignIn = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <S.Gowalk
-        src="src/img/Gowalk.png"
+        src={logo}
         alt=""
       ></S.Gowalk>
       <S.InputFormtitle>이메일주소</S.InputFormtitle>

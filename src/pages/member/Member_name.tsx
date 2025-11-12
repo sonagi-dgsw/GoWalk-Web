@@ -1,4 +1,4 @@
-import * as S from "../../pages/member/styles/styles.ts";
+import * as S from "@/pages/member/styles/styles.ts";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router";
 import { useNavigate } from "react-router";

@@ -2,10 +2,11 @@ import * as S from "./styles/styles.ts";
 import { Link } from "react-router";
 import { useNavigate } from "react-router";
 import { useState } from "react"
-import plus from "../../img/plus.png"
-import minus from "../../img/minus.png"
+import plus from "@assets/plus.png"
+import minus from "@assets/minus.png"
 
 const Member_petweight=()=>{
+    console.log(plus)
     const [value,setValue]=useState(0);
     const onClickPlus=()=>{
         setValue(value+1);
