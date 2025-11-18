@@ -15,23 +15,24 @@
   font-size: 16px;
   font-weight: 600;
   color: #222;
+  margin-top: 0;
   margin-bottom: 16px;
 }
 
 .days {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
   align-items: flex-start;
 }
 
 .day {
   text-align: center;
-  width: 45px;
 }
 
 .circle {
-  width: 45px;
-  height: 45px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -63,7 +64,7 @@
 }
 
 .walk-record img {
-  width: 22px;
-  height: 22px;
+  width: 16px;
+  height: 16px;
   transform: translateX(2px);
 }
