@@ -24,6 +24,8 @@ const Walk = () => {
                     const mapOptions = {
                         center: new window.kakao.maps.LatLng(37.5665, 126.9780),
                         level: 1,
+                        draggable: false,
+                        zoomable: false,
                     };
                     const map = new window.kakao.maps.Map(mapRef.current!, mapOptions);
                     mapInstance.current = map;
@@ -65,6 +67,7 @@ const Walk = () => {
 
                             // 지도 중심 이동
                             map.setCenter(loc);
+                            console.log("현재 위치:", latitude, longitude);
                         },
                         (error) => {
                             console.error("위치 추적 실패:", error);
@@ -77,6 +80,50 @@ const Walk = () => {
                     );
 
                     watchIdRef.current = watchId; // cleanup용으로 저장
+
+                    // 경로 표시
+                    const linePath = [
+                        new window.kakao.maps.LatLng(35.66218448, 128.41384105),
+                        new window.kakao.maps.LatLng(35.66224522, 128.41406133),
+                        new window.kakao.maps.LatLng(35.66231541, 128.41427812),
+                        new window.kakao.maps.LatLng(35.66238690, 128.41448055),
+                        new window.kakao.maps.LatLng(35.66245012, 128.41465088),
+                        new window.kakao.maps.LatLng(35.66249514, 128.41482099),
+                        new window.kakao.maps.LatLng(35.66251045, 128.41499012),
+
+                        new window.kakao.maps.LatLng(35.66248011, 128.41515055),
+                        new window.kakao.maps.LatLng(35.66242098, 128.41530033),
+                        new window.kakao.maps.LatLng(35.66233042, 128.41543012),
+
+                        new window.kakao.maps.LatLng(35.66221078, 128.41551099),
+                        new window.kakao.maps.LatLng(35.66209088, 128.41552013),
+                        new window.kakao.maps.LatLng(35.66198055, 128.41546054),
+
+                        new window.kakao.maps.LatLng(35.66190033, 128.41534022),
+                        new window.kakao.maps.LatLng(35.66184015, 128.41518044),
+                        new window.kakao.maps.LatLng(35.66181011, 128.41498022),
+
+                        new window.kakao.maps.LatLng(35.66182544, 128.41477033),
+                        new window.kakao.maps.LatLng(35.66188041, 128.41456055),
+                        new window.kakao.maps.LatLng(35.66196022, 128.41437044),
+
+                        new window.kakao.maps.LatLng(35.66204412, 128.41418598),
+                        new window.kakao.maps.LatLng(35.66212488, 128.41402077),
+                        new window.kakao.maps.LatLng(35.66218448, 128.41384105),
+                    ];
+
+
+
+
+                    const polyline = new window.kakao.maps.Polyline({
+                        path: linePath,
+                        strokeWeight: 10,
+                        strokeColor: "#EF895A",
+                        strokeOpacity: 0.9,
+                        strokeStyle: "solid",
+                    });
+
+                    polyline.setMap(map);
                 }
             });
         };
