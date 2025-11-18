@@ -8,16 +8,16 @@ import setting from "../home/images/Vector.png";
 import {Link} from "react-router";
 
 const rankingData: RankingProps[] = [
-  { id: "권대형 좋아해", name: "광진", distance: 34.0, time: 15, isMe: false, rank: 2 },
-  { id: "권대형 사랑해", name: "광진동", distance: 35.0, time: 14, isMe: false, rank: 1 },
-  { id: "권대형 사모해", name: "광진", distance: 33.0, time: 13, isMe: false, rank: 3 },
-  { id: "大型最高", name: "길동", distance: 2.7, time: 12, isMe: false, rank: 4 },
-  { id: "大型最高", name: "길동", distance: 2.7, time: 12, isMe: false, rank: 5 },
-  { id: "大型最高", name: "길동", distance: 2.7, time: 12, isMe: false, rank: 6 },
-  { id: "大型最高", name: "길동", distance: 2.7, time: 12, isMe: false, rank: 7 },
-  { id: "大型最高", name: "길동", distance: 2.7, time: 12, isMe: false, rank: 8 },
-  { id: "大型最高", name: "길동", distance: 2.7, time: 12, isMe: false, rank: 9 },
-  { id: "大型最高", name: "길동", distance: 2.7, time: 12, isMe: false, rank: 10 },
+    { id: "권대형 좋아해", name: "광진", distance: 34.0, time: 15, isMe: false, rank: 2 },
+    { id: "권대형 사랑해", name: "광진동", distance: 35.0, time: 14, isMe: false, rank: 1 },
+    { id: "권대형 사모해", name: "광진", distance: 33.0, time: 13, isMe: false, rank: 3 },
+    { id: "大型最高", name: "길동", distance: 2.7, time: 12, isMe: false, rank: 4 },
+    { id: "大型最高", name: "길동", distance: 2.7, time: 12, isMe: false, rank: 5 },
+    { id: "大型最高", name: "길동", distance: 2.7, time: 12, isMe: false, rank: 6 },
+    { id: "大型最高", name: "길동", distance: 2.7, time: 12, isMe: false, rank: 7 },
+    { id: "大型最高", name: "길동", distance: 2.7, time: 12, isMe: false, rank: 8 },
+    { id: "大型最高", name: "길동", distance: 2.7, time: 12, isMe: false, rank: 9 },
+    { id: "大型最高", name: "길동", distance: 2.7, time: 12, isMe: false, rank: 10 },
     {
         id: "권대형",
         name: "권대형입니다.",
