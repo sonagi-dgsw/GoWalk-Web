@@ -9,6 +9,7 @@ import age from "./images/emoji/age.png";
 import weight from "./images/emoji/weight.png";
 import React from "react";
 import WalkRecord from "./components/WalkRecord";
+import RecentRoute from "./components/RecentRoute";
 
 const dogInfo:HomeProps = {
   dogName: "뽀삐 ",
@@ -76,6 +77,9 @@ const Home: React.FC = () => {
         </div>
         <div className="week_record">
             <WalkRecord />
+        </div>
+        <div className="recent_route">
+            <RecentRoute />
         </div>
     </div>
   );
