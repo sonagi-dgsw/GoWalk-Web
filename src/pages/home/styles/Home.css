@@ -175,12 +175,17 @@ img {
 .today_text {
   color: #000000;
   font-size: 12px;
+  font-weight: 500;
 }
 
 .today .time, .today .distance, .today .kcal, .today .days {
   font-size: 18px;  /* 16px → 18px */
   font-weight: 700;
   color: #ef895a;
+}
+
+.distance {
+  margin-top: 3px;
 }
 
 
@@ -204,9 +209,10 @@ img {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   border: 1px solid #e2e8f0;
   margin-top: 8px;
-  font-size: 12px;
   margin-left: 5px;
-  font-size: 16px;
+  line-height: 1.4;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .consecutive_days{
@@ -215,7 +221,7 @@ img {
   color: #ef895a;
 }
 
-.wark_button {
+.walk_button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -230,9 +236,11 @@ img {
   border-radius: 10px;
   font-size: 18px;
   font-weight: bold;
-  margin-left: 16px;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  margin-top: 10px;
   cursor: pointer;
 }
 
