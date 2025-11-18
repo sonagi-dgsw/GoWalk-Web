@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Gowalk = styled.img`
   margin-top: 153px;
   width: 180px;
+    height: 100%;
   margin-bottom: 90.09px;
   margin-left: 111px;
 `;

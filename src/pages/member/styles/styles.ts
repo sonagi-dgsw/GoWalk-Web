@@ -169,6 +169,7 @@ margin-left:20px;
 export const GenderBackground=styled.div`
   background-color:#EFEFEF;
   border-radius:16px;
+    cursor: pointer;
   width:160px;
   height:160px;
   display:flex;
@@ -180,6 +181,7 @@ export const GenderBackground=styled.div`
 
 export const Gender=styled.img`
   height:37px;
+    width: auto;
 `
 
 export const GenderText=styled.h1`
