@@ -29,83 +29,86 @@ const rankingData: RankingProps[] = [
 ];
 
 const Ranking: React.FC = () => {
-  const [mode, setMode] = useState<"distance" | "time">("distance");
+    const [mode, setMode] = useState<"distance" | "time">("distance");
 
-  const sortedData = [...rankingData].sort((a, b) =>
-    mode === "distance" ? b.distance - a.distance : b.time - a.time
-  );
+    const sortedData = [...rankingData].sort((a, b) =>
+        mode === "distance" ? b.distance - a.distance : b.time - a.time
+    );
 
-  const top3 = sortedData.slice(0, 3);
-  const myRanking = sortedData.find(item => item.isMe);
+    const top3 = sortedData.slice(0, 3);
+    const others = sortedData.slice(3);
+    const myRanking = sortedData.find(item => item.isMe);
 
-  const renderValue = (item: RankingProps) =>
-    mode === "distance" ? `${item.distance.toFixed(1)}km` : `${item.time}시간`;
+    const renderValue = (item: RankingProps) =>
+        mode === "distance" ? `${item.distance.toFixed(1)}km` : `${item.time}시간`;
 
-  return (
-    <div className="container">
-      <div className="header">
-        <Link to={"/"} className="tab">
-          <img className="logo" src={logo} alt="로고" />
-        </Link>
-        <div className="tab">
-          <img className="setting" src={setting} alt="설정" />
-        </div>
-      </div>
-      <div className="r_header">
-        <div className="tabs">
-          <div
-            className={`tab ${mode === "distance" ? "active" : ""}`}
-            onClick={() => setMode("distance")}
-          >
-            거리
-          </div>
-          <div
-            className={`tab ${mode === "time" ? "active" : ""}`}
-            onClick={() => setMode("time")}
-          >
-            시간
-          </div>
-        </div>
-      </div>
-
-      <div className="top3">
-        {[top3[1], top3[0], top3[2]].map((item, i) => {
-          if (!item) return null;
-          const rank = i === 0 ? 2 : i === 1 ? 1 : 3;
-          const offsetY = rank === 1 ? "-12px" : "8px";
-          return (
-            <div
-              key={item.id}
-              className="rank"
-              style={{ transform: `translateY(${offsetY})` }}
-            >
-              <div className="avatar">
-                <div className={`badge badge-${rank}`}>{rank}</div>
-                <img
-                  src={guest}
-                  alt="게스트"
-                  onError={(e) => {
-                    const target = e.currentTarget as HTMLImageElement;
-                    target.onerror = null;
-                    target.src = guest;
-                  }}
-                />
-              </div>
-              <div className="name">{item.id}</div>
-              <div className="value">{renderValue(item)}</div>
+    return (
+        <div className="container">
+            <div className="header">
+                <Link to={"/"} className="tab">
+                    <img className="logo" src={logo} alt="로고" />
+                </Link>
+                <div className="tab">
+                    <img className="setting" src={setting} alt="설정" />
+                </div>
             </div>
-          );
-        })}
-      </div>
+            <div className="r_header">
+                <div className="tabs">
+                    <div
+                        className={`tab ${mode === "distance" ? "active" : ""}`}
+                        onClick={() => setMode("distance")}
+                    >
+                        거리
+                        <div className="tab-underline" />
+                    </div>
+                    <div
+                        className={`tab ${mode === "time" ? "active" : ""}`}
+                        onClick={() => setMode("time")}
+                    >
+                        시간
+                        <div className="tab-underline" />
+                    </div>
+                </div>
+            </div>
 
-      <div className="list">
-          {myRanking && <RankingItem item={myRanking} renderValue={renderValue} />}
-        {sortedData.map((item) => (
-          <RankingItem key={item.id} item={item} renderValue={renderValue} />
-        ))}
-      </div>
-    </div>
-  );
+            <div className="top3">
+                {[top3[1], top3[0], top3[2]].map((item, i) => {
+                    if (!item) return null;
+                    const rank = i === 0 ? 2 : i === 1 ? 1 : 3;
+                    const offsetY = rank === 1 ? "-12px" : "8px";
+                    return (
+                        <div
+                            key={item.id}
+                            className="rank"
+                            style={{ transform: `translateY(${offsetY})` }}
+                        >
+                            <div className="avatar">
+                                <div className={`badge badge-${rank}`}>{rank}</div>
+                                <img
+                                    src={guest}
+                                    alt="게스트"
+                                    onError={(e) => {
+                                        const target = e.currentTarget as HTMLImageElement;
+                                        target.onerror = null;
+                                        target.src = guest;
+                                    }}
+                                />
+                            </div>
+                            <div className="name">{item.id}</div>
+                            <div className="value">{renderValue(item)}</div>
+                        </div>
+                    );
+                })}
+            </div>
+
+            <div className="list">
+                {myRanking && <RankingItem item={myRanking} renderValue={renderValue} />}
+                {sortedData.map((item) => (
+                    <RankingItem key={item.id} item={item} renderValue={renderValue} />
+                ))}
+            </div>
+        </div>
+    );
 };
 
 export default Ranking;

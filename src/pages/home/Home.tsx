@@ -3,15 +3,11 @@ import "./styles/Home.css";
 import logo from "./images/산책가자.png";
 import setting from "./images/Vector.png";
 import dog from "./images/dog.png";
-import breed from "./images/emoji/species.png";
-import age from "./images/emoji/age.png";
-import weight from "./images/emoji/weight.png";
 import { HomeProps } from "./types/Home_type";
 import breed from "./images/emoji/species.png";
 import age from "./images/emoji/age.png";
 import weight from "./images/emoji/weight.png";
 import {Link} from "react-router";
-import WalkRecord from "@/pages/home/components/WalkRecord.tsx";
 
 import React from "react";
 import WalkRecord from "./components/WalkRecord";
