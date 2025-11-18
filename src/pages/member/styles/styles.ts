@@ -157,3 +157,35 @@ export const Minus=styled.img`
 export const BodyCover=styled.div`
 width:130px;
 `
+
+export const GenderCover=styled.div`
+display:flex;
+flex-direction:row;
+gap:12px;
+margin-bottom:24px;
+margin-left:20px;
+`
+
+export const GenderBackground=styled.div`
+  background-color:#EFEFEF;
+  border-radius:16px;
+    cursor: pointer;
+  width:160px;
+  height:160px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+`
+
+export const Gender=styled.img`
+  height:37px;
+    width: auto;
+`
+
+export const GenderText=styled.h1`
+  font-size:18px;
+  color:#B8B8B8;
+  font-weight:600;
+`
