@@ -17,6 +17,7 @@ import NotFoundPage from "@/pages/error/NotFoundPage.tsx";
 import Walk from "@/pages/walk/Walk.tsx";
 import Ranking from "@/pages/ranking/Ranking.tsx";
 import Home from "@/pages/home/Home.tsx";
+import Setting from "@/pages/setting/setting.tsx";
 
 const router = createBrowserRouter([
     {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
                         Component: WalkFinishPage,
                     }
                 ]
+            },
+            {
+                path: "setting",
+                Component: Setting,
             },
             {
                 path: "/signin",

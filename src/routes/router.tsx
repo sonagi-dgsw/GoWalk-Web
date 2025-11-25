@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router";
+import React from "react";
 import Ranking from "../pages/ranking/Ranking";
 import Home from "../pages/home/Home";
 
