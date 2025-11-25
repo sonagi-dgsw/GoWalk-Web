@@ -3,15 +3,22 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import logo from "@assets/Gowalk.png";
+import GoWalkAxios from "@/axios/GoWalkAxios.ts";
 
 const SignIn = () => {
   const {
     register,
     handleSubmit,
+      getValues
   } = useForm();
   const navigate = useNavigate();
-  const onSubmit = () => {
-      navigate("/");
+  const onSubmit = async () => {
+      const res = await GoWalkAxios.post("/api/auth/signin", getValues());
+      if (res.status >= 200 && res.status < 300) navigate("/");
+      else {
+          const data = res.response.data;
+          alert(data?.error?.message);
+      }
   }
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -19,16 +26,17 @@ const SignIn = () => {
         src={logo}
         alt=""
       ></S.Gowalk>
-      <S.InputFormtitle>이메일주소</S.InputFormtitle>
+      <S.InputFormtitle>아이디</S.InputFormtitle>
       <S.InputFormtext
-        placeholder="이메일주소를 입력해주세요"
-        {...register("email", { required: "이메일주소를 입력해주세요" })}
+        placeholder="아이디를 입력해주세요"
+        {...register("username", { required: "아이디를 입력해주세요" })}
       ></S.InputFormtext>
       <S.Line></S.Line>
       <S.InputFormtitle>비밀번호</S.InputFormtitle>
       <S.InputFormtext
         type="password"
         placeholder="비밀번호를 입력해주세요"
+        {...register("password", { required: "비밀번호를 입력해주세요" })}
       ></S.InputFormtext>
       <S.Line></S.Line>
       <S.Button >로그인</S.Button>

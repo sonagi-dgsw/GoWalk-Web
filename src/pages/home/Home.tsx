@@ -11,6 +11,8 @@ import {Link} from "react-router";
 
 import React from "react";
 import WalkRecord from "./components/WalkRecord";
+import {useAtomValue} from "jotai";
+import {userAtom} from "@/atoms/atoms.ts";
 
 const dogInfo:HomeProps = {
   dogName: "뽀삐",
@@ -26,7 +28,7 @@ const dogInfo:HomeProps = {
 };
 
 const Home: React.FC = () => {
-
+    const user = useAtomValue(userAtom);
     const dogGender = dogInfo.dogGender ? "♂" : "♀";
 
   return (
@@ -45,7 +47,7 @@ const Home: React.FC = () => {
                 <div className="dog_name">
                     {dogInfo.dogName}{dogGender}
                     <div className="guardian_name" >
-                        (보호자 {dogInfo.guardianName})
+                        (보호자 {user?.username ?? "loading"})
                     </div>
                 </div>
                 <div className="dog_breed"><img src={breed} alt="견종 이모지" />견종  {dogInfo.dogBreed}</div>

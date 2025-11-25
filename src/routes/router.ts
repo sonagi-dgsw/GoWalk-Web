@@ -1,22 +1,7 @@
-import {createBrowserRouter} from "react-router";
-import SignIn from "@/pages/signin/SignIn.tsx";
+import { createBrowserRouter } from "react-router";
 import Layout from "@/widgets/layout/Layout.tsx";
-import WalkFinishPage from "@/pages/walk/finish/WalkFinish.tsx";
-
-import Member_emailaddress from "@/pages/member/Member_emailaddress.tsx";
-import Member_certification from "@/pages/member/Member_certification.tsx";
-import Member_name from "@/pages/member/Member_name.tsx";
-import Member_petname from "@/pages/member/Member_petname.tsx";
-import Member_petsort from "@/pages/member/Member_petsort.tsx";
-import Member_petage from "@/pages/member/Member_petage.tsx";
-import Member_petweight from "../pages/member/Member_petweight.tsx";
-import Member_gender from "../pages/member/Member_gender.tsx";
-
 import ErrorPage from "@/pages/error/ErrorPage.tsx";
-import NotFoundPage from "@/pages/error/NotFoundPage.tsx";
-import Walk from "@/pages/walk/Walk.tsx";
-import Ranking from "@/pages/ranking/Ranking.tsx";
-import Home from "@/pages/home/Home.tsx";
+import Loading from "@/widgets/loading/Loading";
 
 const router = createBrowserRouter([
     {
@@ -26,67 +11,99 @@ const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                Component: Home,
+                lazy: async () => ({
+                    Component: (await import("@/pages/home/Home.tsx")).default,
+                }),
             },
             {
                 path: "ranking",
-                Component: Ranking,
+                lazy: async () => ({
+                    Component: (await import("@/pages/ranking/Ranking.tsx")).default,
+                }),
             },
             {
                 path: "walk",
                 children: [
                     {
                         index: true,
-                        Component: Walk
+                        lazy: async () => ({
+                            Component: (await import("@/pages/walk/Walk.tsx")).default,
+                        }),
                     },
                     {
                         path: "finish",
-                        Component: WalkFinishPage,
-                    }
-                ]
+                        lazy: async () => ({
+                            Component: (await import("@/pages/walk/finish/WalkFinish.tsx")).default,
+                        }),
+                    },
+                ],
             },
             {
-                path: "/signin",
-                Component: SignIn,
+                path: "signin",
+                lazy: async () => ({
+                    Component: (await import("@/pages/signin/SignIn.tsx")).default,
+                }),
+            },
+
+            //  Member routes
+            {
+                path: "member_emailaddress",
+                lazy: async () => ({
+                    Component: (await import("@/pages/member/Member_emailaddress.tsx")).default,
+                }),
             },
             {
-                path: "/member_emailaddress",
-                Component: Member_emailaddress,
+                path: "member_certification",
+                lazy: async () => ({
+                    Component: (await import("@/pages/member/Member_certification.tsx")).default,
+                }),
             },
             {
-                path: "/member_certification",
-                Component: Member_certification,
+                path: "member_name",
+                lazy: async () => ({
+                    Component: (await import("@/pages/member/Member_name.tsx")).default,
+                }),
             },
             {
-                path: "/member_name",
-                Component: Member_name,
+                path: "member_petname",
+                lazy: async () => ({
+                    Component: (await import("@/pages/member/Member_petname.tsx")).default,
+                }),
             },
             {
-                path: "/member_petname",
-                Component: Member_petname,
+                path: "member_petsort",
+                lazy: async () => ({
+                    Component: (await import("@/pages/member/Member_petsort.tsx")).default,
+                }),
             },
             {
-                path: "/member_petsort",
-                Component: Member_petsort,
+                path: "member_petage",
+                lazy: async () => ({
+                    Component: (await import("@/pages/member/Member_petage.tsx")).default,
+                }),
             },
             {
-                path: "/member_petage",
-                Component: Member_petage,
+                path: "member_petweight",
+                lazy: async () => ({
+                    Component: (await import("@/pages/member/Member_petweight.tsx")).default,
+                }),
             },
             {
-                path: "/member_petweight",
-                Component: Member_petweight,
+                path: "member_gender",
+                lazy: async () => ({
+                    Component: (await import("@/pages/member/Member_gender.tsx")).default,
+                }),
             },
-            {
-                path:"/member_gender",
-                Component:Member_gender
-            },
+
+            // Not Found
             {
                 path: "*",
-                Component: NotFoundPage,
+                lazy: async () => ({
+                    Component: (await import("@/pages/error/NotFoundPage.tsx")).default,
+                }),
             },
-        ]
+        ],
     },
-])
+]);
 
 export default router;
