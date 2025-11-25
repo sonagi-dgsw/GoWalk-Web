@@ -5,9 +5,11 @@ import Navigation from "../navigation/Navigation.tsx";
 import GoWalkAxios from "@/axios/GoWalkAxios.ts";
 import {useAtom} from "jotai";
 import {userAtom} from "@/atoms/atoms.ts";
-import {Suspense, useEffect} from "react";
+import {Suspense, useEffect, useState} from "react";
 import Loading from "@/widgets/loading/Loading.tsx";
 import {Cookies} from "react-cookie";
+import {useNavigate} from "react-router-dom";
+import {fetchUser} from "@/axios/fetchUser.ts";
 
 // Navigation 보여주지 않는 페이지 목록
 const independent_pages = [
@@ -26,32 +28,26 @@ const independent_pages = [
 
 const Layout = () => {
     const [user, setUser] = useAtom(userAtom);
+    const [isLoading, setIsLoading] = useState(true);
     const location = useLocation();
     const pathname = location.pathname;
-    const cookies = new Cookies();
-    const isLoggedIn = Boolean(cookies.get("accessToken"));
 
     const showNavigation = !(independent_pages.includes(pathname));
 
     useEffect(() => {
-        if(isLoggedIn){
-            GoWalkAxios.get('/api/members/me').then(res => {
-                setUser(res.data.data);
-            });
+        setTimeout(() => {{
+            setIsLoading(false);
+        }}, 2000);
+        if(!user) {
+            setUser(fetchUser());
         }
     }, [])
 
-    if (isLoggedIn && !user) return (
-        <S.Wrapper>
-            <S.Container $showNavigation={showNavigation}>
-                <Loading />
-                {showNavigation && <Navigation />}
-            </S.Container>
-        </S.Wrapper>
-    );
-
     return <S.Wrapper>
         <S.Container $showNavigation={showNavigation}>
+            {isLoading && (
+                <Loading />
+            )}
             <Suspense fallback={<Loading />}>
                 <S.Content>
                     <Outlet />

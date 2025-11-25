@@ -5,7 +5,7 @@ const Loading = () => {
     return (
         <S.Container>
             <S.Logo src={logo} />
-            <S.Title>환영합니다!</S.Title>
+            <S.Title>환영합니다. 오늘도 산책해볼까요?</S.Title>
         </S.Container>
     )
 }

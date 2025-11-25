@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./styles/Ranking.css";
+import "../home/styles/Home.css";
 import { RankingProps } from "./types/Ranking_type";
 import guest from "./images/guest.png";
 import RankingItem from "./components/RankingItem.tsx";
