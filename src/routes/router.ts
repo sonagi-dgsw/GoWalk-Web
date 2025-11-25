@@ -86,6 +86,8 @@ const router = createBrowserRouter([
                 path:"/member_gender",
                 Component:Member_gender
             },
+
+            // Not Found
             {
                 path: "*",
                 Component: NotFoundPage,
