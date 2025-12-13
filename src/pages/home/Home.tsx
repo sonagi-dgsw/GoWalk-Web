@@ -3,7 +3,7 @@ import "./styles/Home.css";
 import logo from "./images/산책가자.png";
 import setting from "./images/Vector.png";
 import dog from "./images/dog.png";
-import {HomeProps, IProfileApiResponse} from "./types/Home_type";
+import {IProfileApiResponse} from "./types/Home_type";
 import breed from "./images/emoji/species.png";
 import age from "./images/emoji/age.png";
 import weight from "./images/emoji/weight.png";
@@ -15,19 +15,6 @@ import {useAtomValue} from "jotai";
 import {userAtom} from "@/atoms/atoms.ts";
 import goWalkAxios from "@/axios/GoWalkAxios.ts";
 import RecentRoute from "@/pages/home/components/RecentRoute.tsx";
-
-const dogInfo:HomeProps = {
-  dogName: "뽀삐",
-  guardianName: "권대형",
-  dogGender: true,
-  dogBreed: "웰시코기",
-  dogAge: 4,
-  dogWeight: 12,
-  dayWalkTime: 49,
-  dayWalkDistance: 3.7,
-  useKcal: 300,
-  consecutiveDays: 8,
-};
 
 const Home: React.FC = () => {
     const [profile, setProfile] = useState<IProfileApiResponse>();
@@ -76,11 +63,11 @@ const Home: React.FC = () => {
                 </div>
                 <div className="kcalbox">
                     <div className="today_text">소모한 칼로리</div>
-                    <div className="kcal">{dogInfo.useKcal} kcal</div>
+                    <div className="kcal">- kcal</div>
                 </div>
             </div>
             <div className="consecutive_days_box">
-                <div className="consecutive_days">{dogInfo.consecutiveDays} 일</div>
+                <div className="consecutive_days">- 일</div>
                 <div className="consecutive_days_text">연속으로 산책했어요</div>
             </div>
         </div>
