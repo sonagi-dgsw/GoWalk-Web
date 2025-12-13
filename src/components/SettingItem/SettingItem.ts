@@ -5,6 +5,7 @@ export const Item = styled.div`
   align-items: center;
   gap: 12px;
   padding: 12px 24px;
+    cursor: pointer;
 `;
 
 export const Icon = styled.div<{ url: string }>`

@@ -2,30 +2,19 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  background: #f3f3f3;
-`;
-
-export const StatusBar = styled.div`
-  height: 54px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 export const Header = styled.div`
-  background: #fff;
   display: flex;
   align-items: center;
-  padding: 0 24px;
-  font-size: 20px;
+  padding: 0 20px;
+  font-size: 24px;
   font-weight: 600;
 `;
 
 export const Content = styled.div`
-  background: #fff;
   border-radius: 16px 16px 0 0;
-  padding-top: 20px;
-  margin-top: 12px;
+  margin-top: 10px;
   min-height: 700px;
   padding-bottom: 50px;
 `;
@@ -60,20 +49,6 @@ border-color:${(props)=>props.color ||"B8B8B8"};
 position:relative;
 right:40px;
 left:${(props)=>props.color ? "-20px":"-40px"};
-`
-
-export const Logo=styled.img`
-width:120px;
-height:auto;
-`
-
-export const LogoContainer=styled.div`
-height: 80px;
-width: 100%;
-background: #fff;
-display: flex;
-align-items: center;
-padding: 0 24px;
 `
 
 export const Bell=styled.img`

@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const Gowalk = styled.img`
   margin-top: 153px;
   width: 180px;
-    height: 100%;
   margin-bottom: 90.09px;
   margin-left: 111px;
     height: fit-content;
@@ -54,6 +53,7 @@ export const InputFormtext = styled.input`
   font-weight: 500;
   line-height: 1;
   margin-bottom: 1.3vh;
+    background: none;
   border: none;
   width: 86vw;
   &::placeholder {

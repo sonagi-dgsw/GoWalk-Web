@@ -45,9 +45,9 @@ const Home: React.FC = () => {
             <Link to={"/"} className="tab">
                 <img className="logo" src={logo} alt="로고" />
             </Link>
-            <div className="tab">
+            <Link to={"/setting"} className="tab">
                 <img className="setting" src={setting} alt="설정" />
-            </div>
+            </Link>
         </div>
         <div className="dog_info">
             <img className="dog_img" src={dog} alt="강아지 사진" />

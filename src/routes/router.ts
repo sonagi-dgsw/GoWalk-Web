@@ -19,6 +19,7 @@ import NotFoundPage from "@/pages/error/NotFoundPage.tsx";
 import Ranking from "@/pages/ranking/Ranking.tsx";
 import Home from "@/pages/home/Home.tsx";
 import SignIn from "@/pages/signin/SignIn.tsx";
+import Setting from "@/pages/setting/setting.tsx";
 
 const router = createBrowserRouter([
     {
