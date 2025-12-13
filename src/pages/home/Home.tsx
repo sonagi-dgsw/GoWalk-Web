@@ -14,6 +14,7 @@ import WalkRecord from "./components/WalkRecord";
 import {useAtomValue} from "jotai";
 import {userAtom} from "@/atoms/atoms.ts";
 import goWalkAxios from "@/axios/GoWalkAxios.ts";
+import RecentRoute from "@/pages/home/components/RecentRoute.tsx";
 
 const dogInfo:HomeProps = {
   dogName: "뽀삐",
@@ -88,6 +89,9 @@ const Home: React.FC = () => {
         </div>
         <div className="week_record">
             <WalkRecord />
+        </div>
+        <div className="recent_route">
+            <RecentRoute />
         </div>
     </div>
   );
