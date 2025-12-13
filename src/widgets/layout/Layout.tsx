@@ -57,7 +57,6 @@ const Layout = () => {
     }, [])
 
     return <S.Wrapper>
-        <S.Overlay />
         <S.Banner alt="banner-left" src={banner_left} />
         <S.Container $showNavigation={showNavigation}>
             {isLoading && (

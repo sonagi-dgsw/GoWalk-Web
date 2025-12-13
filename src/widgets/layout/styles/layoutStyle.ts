@@ -9,13 +9,6 @@ export const Wrapper = styled.div`
     background-color: #F2F2F2;
 `;
 
-export const Overlay = styled.div`
-    background-color: rgba(0,0,0,0.03);
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-`
-
 export const Banner = styled.img`
     flex: 1;
     height: 100vh;
