@@ -457,3 +457,29 @@ export const ActionConfirmButton = styled.button`
       background: #5aaaeF; /* 활성화 시 파란색 */
   }
 `;
+
+export const LoadingOverlay = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: rgba(0,0,0,0.4);
+  z-index: 15;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+`;
+
+export const LoadingGIF = styled.img`
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+`;
+
+export const LoadingText = styled.p`
+  font-weight: 600;
+  color: white;
+`;

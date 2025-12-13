@@ -15,10 +15,10 @@ export const Banner = styled.img`
     object-fit: cover;
 `;
 
-export const Container = styled.div<{$showNavigation: boolean}>`
-    width: 375px; // iPhone 12 Size
-    height: 812px; // iPhone 12 Size
-    border-radius: 30px;
+export const Container = styled.div<{$showNavigation: boolean, $isMobile: boolean}>`
+    width: ${props => props.$isMobile ? "100vw" : "375px"}; // iPhone 12 Size
+    height: ${props => props.$isMobile ? "100vh" : "812px"}; // iPhone 12 Size
+    border-radius: ${props => props.$isMobile ? 0 : "30px"};
     border: 1px solid #ccc;
     box-sizing: border-box;
     overflow: hidden;

@@ -12,4 +12,13 @@ interface IUser {
     petGender: TPetGender;
 }
 
+interface ICoordinate {
+    lat: number;
+    lng: number;
+}
+
+export type IRoute = ICoordinate[];
+
 export const userAtom = atom<IUser | null>(null);
+
+export const routeAtom = atom<IRoute | null>(null);

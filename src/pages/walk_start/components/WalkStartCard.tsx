@@ -9,14 +9,17 @@ import {
   CancelButton,
   ConfirmButton,
   Row,
-  DecoratedText
+  DecoratedText, LoadingOverlay, LoadingGIF, LoadingText
 } from "../styles/styles";
 import Course from "./Course";
 import CustomSlider from "./CustomSlider";
 import HotPlace from "./HotPlace";
 import PlaceSearchCard from "./PlaceSearchCard";
-import {useNavigate} from "react-router-dom";
 import {Link} from "@/components/common/Link.tsx";
+import loadingGIF from "@assets/loading.gif";
+import {useAtom} from "jotai";
+import {routeAtom, userAtom} from "@/atoms/atoms.ts";
+import {useAtomValue} from "jotai/index";
 
 const hotPlaceData = [
   { name: "홈파인 카페", category: "카페", distance: "3분 거리", imgUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNuQN7z7rNlkUVrejKyNYOfq4mPOQXvNPAZA&s" },
@@ -81,11 +84,37 @@ export const exampleRoutes = [
   ]
 ];
 
+const dummyRoute = [
+  { lat: 35.317190285088, lng: 129.00304170840155 },
+  { lat: 35.31726939771425, lng: 129.00316185288472 },
+  { lat: 35.31830924640805, lng: 129.0019973155924 },
+  { lat: 35.31797054397812, lng: 129.00149969644477 },
+  { lat: 35.317415922679885, lng: 129.002068745145 },
+  { lat: 35.316934641667494, lng: 129.00147416233088 },
+  { lat: 35.31641477776775, lng: 129.00212102327515 },
+  { lat: 35.317190285088, lng: 129.00304170840155 },
+];
 
 const WalkStartCard = () => {
-  const navigate = useNavigate();
+  const user = useAtomValue(userAtom);
   const [step, setStep] = useState(1);
   const [value, setValue] = useState(90);
+  const [isLoading, setLoading] = useState(false);
+  const [_, setRoute] = useAtom(routeAtom);
+
+  const generateRoute = async () => {
+    setLoading(true);
+
+    // Generate Route...
+
+    setTimeout(() => {
+      setLoading(false);
+      setStep(6);
+
+      // @ts-ignore
+      setRoute(dummyRoute);
+    }, 3000)
+  }
 
   return (
     <>
@@ -192,15 +221,23 @@ const WalkStartCard = () => {
 
           <Row>
             <CancelButton onClick={() => setStep(4)}>이전으로</CancelButton>
-            <ConfirmButton onClick={() => setStep(6)}>없어요</ConfirmButton>
+            <ConfirmButton onClick={() => generateRoute()}>없어요</ConfirmButton>
           </Row>
         </Card>
       )}
+
+      {isLoading && (
+          <LoadingOverlay>
+            <LoadingGIF alt={"로딩 중.."} src={loadingGIF} />
+            <LoadingText>AI 맞춤 산책 경로를 생성하고 있어요!</LoadingText>
+          </LoadingOverlay>
+      )}
+
       {step === 6 && (
         <Card>
           <TextArea>
             <TitleText>
-              AI가 권대형 님과 뽀삐를 위한 산책 경로를 생성했어요!
+              AI가 {user.username} 님과 {user.petName}를 위한 산책 경로를 생성했어요!
             </TitleText>
             <DescriptionText>
               견주와 반려견을 모두 고려한 경로에요.

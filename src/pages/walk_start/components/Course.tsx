@@ -28,7 +28,7 @@ const Course = ({ route, index }: CourseProps) => {
         const polyline = new kakao.maps.Polyline({
             path: linePath,
             strokeWeight: 6,
-            strokeColor: "#EF895A",
+            strokeColor: "#2735ed",
             strokeOpacity: 0.9,
         });
 
@@ -38,8 +38,6 @@ const Course = ({ route, index }: CourseProps) => {
         const bounds = new kakao.maps.LatLngBounds();
         linePath.forEach((p) => bounds.extend(p));
         map.setBounds(bounds);
-
-
     }, [route]);
 
 

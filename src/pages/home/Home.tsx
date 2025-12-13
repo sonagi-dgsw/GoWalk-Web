@@ -46,9 +46,9 @@ const Home: React.FC = () => {
                         (보호자 {user.username})
                     </div>
                 </div>
-                <div className="dog_breed"><img src={breed} alt="견종 이모지" />견종  {user.breed}</div>
-                <div className="dog_age"><img src={age} alt="나이" />나이  {user.breedAge}살</div>
-                <div className="dog_weight"><img src={weight} alt="체중" />체중  {user.petWeight}kg</div>
+                <div className="dog_breed"><img src={breed} alt="견종 이모지" />견종  <strong>{user.breed}</strong></div>
+                <div className="dog_age"><img src={age} alt="나이" />나이  <strong>{user.breedAge}살</strong></div>
+                <div className="dog_weight"><img src={weight} alt="체중" />체중  <strong>{user.petWeight}kg</strong></div>
             </div>
         </div>
         <div className="bottom_box">
