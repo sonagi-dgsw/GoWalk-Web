@@ -1,143 +1,194 @@
 import { useEffect, useRef } from "react";
 import { MapContainer } from "./styles/styles";
 
-import petshop from '../walk/assets/petshop.png';
 import WalkInfoCard from "./components/WalkInfoCard";
 import * as S from "./styles/styles.ts";
+
+const arrowSVG = (angle: number) => `
+  <div style="
+    transform: rotate(${-angle}deg);
+    width: 32px;
+    height: 32px;
+  ">
+    <svg
+      fill="none"
+      viewBox="0 0 24 24"
+      width="32"
+      height="32"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <!-- white outline -->
+      <path
+        d="m8.25 4.5 7.5 7.5-7.5 7.5"
+        stroke="white"
+        stroke-width="7"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+
+      <!-- main arrow -->
+      <path
+        d="m8.25 4.5 7.5 7.5-7.5 7.5"
+        stroke="#008ad4"
+        stroke-width="4"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  </div>
+`;
+
+const startPointOverlay = `
+  <div style="display:flex; flex-direction: column; gap: 5px; justify-content: center; align-items:center;">
+    <div style="
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #2E7DFF;
+      border: 3px solid white;
+    "></div>
+    <div style="
+      margin-left: 6px;
+      font-size: 12px;
+      font-weight: bold;
+      color: #2E7DFF;
+      background: white;
+      padding: 2px 6px;
+      border-radius: 6px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    ">
+      START
+    </div>
+  </div>
+`;
+
 
 const Walk = () => {
     const KAKAO_MAP_KEY = import.meta.env.VITE_KAKAO_MAP_KEY;
     const mapRef = useRef<HTMLDivElement | null>(null);
-    const mapInstance = useRef<any>(null); // 지도 인스턴스 저장
-    const userMarkerRef = useRef<any>(null); // 사용자 위치 마커 저장
-    const watchIdRef = useRef<number | null>(null); // watchPosition ID 저장
+    const mapInstance = useRef<any>(null);
+    const userMarkerRef = useRef<any>(null);
+    const watchIdRef = useRef<number | null>(null);
+
+    const polylineRef = useRef<any>(null);
+    const overlays = [];
+
+    /** 두 좌표 사이 각도 계산 */
+    const getAngle = (p1, p2) => {
+        const dx = p2.getLng() - p1.getLng();
+        const dy = p2.getLat() - p1.getLat();
+        return (Math.atan2(dy, dx) * 180) / Math.PI;
+    };
+
 
     useEffect(() => {
         const onload = () => {
             window.kakao.maps.load(() => {
-                if (navigator.geolocation && mapRef.current) {
-                    // 기본 지도 초기화 (서울 중심)
-                    const mapOptions = {
-                        center: new window.kakao.maps.LatLng(37.5665, 126.9780),
-                        level: 1,
-                        draggable: false,
-                        zoomable: false,
-                    };
-                    const map = new window.kakao.maps.Map(mapRef.current!, mapOptions);
-                    mapInstance.current = map;
+                if (!navigator.geolocation || !mapRef.current) return;
 
-                    // 마커 이미지 설정
-                    const imageSrc =
-                        "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png"; // 마커 이미지 URL
-                    const imageSize = new window.kakao.maps.Size(40, 42);
-                    const imageOption = { offset: new window.kakao.maps.Point(20, 42) };
-                    const markerImage = new window.kakao.maps.MarkerImage(
-                        imageSrc,
-                        imageSize,
-                        imageOption
-                    );
+                /** 지도 초기화 */
+                const map = new window.kakao.maps.Map(mapRef.current, {
+                    center: new window.kakao.maps.LatLng(37.5665, 126.978),
+                    level: 1,
+                    draggable: false,
+                    zoomable: false,
+                });
+                mapInstance.current = map;
 
-                    // 펫샵 마커
-                    const petshopImage = new window.kakao.maps.MarkerImage(
-                        petshop,
-                        imageSize,
-                        imageOption
-                    );
+                /** 사용자 마커 */
+                const userMarker = new window.kakao.maps.Marker({
+                    map,
+                    position: map.getCenter(),
+                    image: new window.kakao.maps.MarkerImage(
+                        "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png",
+                        new window.kakao.maps.Size(40, 42),
+                        { offset: new window.kakao.maps.Point(20, 42) }
+                    ),
+                });
+                userMarkerRef.current = userMarker;
 
-                    // 사용자 위치 마커 생성
-                    const userMarker = new window.kakao.maps.Marker({
-                        map,
-                        position: map.getCenter(),
-                        image: markerImage,
-                    });
-                    userMarkerRef.current = userMarker;
+                /** 실시간 위치 추적 */
+                watchIdRef.current = navigator.geolocation.watchPosition(
+                    (pos) => {
+                        const loc = new window.kakao.maps.LatLng(
+                            pos.coords.latitude,
+                            pos.coords.longitude
+                        );
+                        userMarker.setPosition(loc);
+                        map.setCenter(loc);
+                    },
+                    console.error,
+                    { enableHighAccuracy: true }
+                );
 
-                    // 실시간 위치 추적
-                    const watchId = navigator.geolocation.watchPosition(
-                        (position) => {
-                            const { latitude, longitude } = position.coords;
-                            const loc = new window.kakao.maps.LatLng(latitude, longitude);
+                /** 경로 */
+                const linePath = [
+                    { lat: 35.317190285088, lng: 129.00304170840155 },
+                    { lat: 35.31726939771425, lng: 129.00316185288472 },
+                    { lat: 35.31830924640805, lng: 129.0019973155924 },
+                    { lat: 35.31797054397812, lng: 129.00149969644477 },
+                    { lat: 35.317415922679885, lng: 129.002068745145 },
+                    { lat: 35.316934641667494, lng: 129.00147416233088 },
+                    { lat: 35.31641477776775, lng: 129.00212102327515 },
+                    { lat: 35.317190285088, lng: 129.00304170840155 },
+                ].map(p => new window.kakao.maps.LatLng(p.lat, p.lng));
 
-                            // 마커 위치 갱신
-                            userMarker.setPosition(loc);
+                /** Polyline */
+                const polyline = new window.kakao.maps.Polyline({
+                    path: linePath,
+                    strokeWeight: 10,
+                    strokeColor: "#5AAAEF",
+                    strokeStyle: "longdash",
+                    strokeOpacity: 0.9,
+                });
+                polyline.setMap(map);
+                polylineRef.current = polyline;
 
-                            // 지도 중심 이동
-                            map.setCenter(loc);
-                            console.log("현재 위치:", latitude, longitude);
-                        },
-                        (error) => {
-                            console.error("위치 추적 실패:", error);
-                        },
-                        {
-                            enableHighAccuracy: true,
-                            maximumAge: 0,
-                            timeout: 5000,
-                        }
-                    );
+                /** 방향 화살표 마커 */
+                for (let i = 0; i < linePath.length - 1; i++) {
+                    const from = linePath[i];
+                    const to = linePath[i + 1];
+                    const angle = getAngle(from, to);
 
-                    watchIdRef.current = watchId; // cleanup용으로 저장
-
-                    // 경로 표시
-                    const linePath = [
-                        new window.kakao.maps.LatLng(35.66218448, 128.41384105),
-                        new window.kakao.maps.LatLng(35.66224522, 128.41406133),
-                        new window.kakao.maps.LatLng(35.66231541, 128.41427812),
-                        new window.kakao.maps.LatLng(35.66238690, 128.41448055),
-                        new window.kakao.maps.LatLng(35.66245012, 128.41465088),
-                        new window.kakao.maps.LatLng(35.66249514, 128.41482099),
-                        new window.kakao.maps.LatLng(35.66251045, 128.41499012),
-
-                        new window.kakao.maps.LatLng(35.66248011, 128.41515055),
-                        new window.kakao.maps.LatLng(35.66242098, 128.41530033),
-                        new window.kakao.maps.LatLng(35.66233042, 128.41543012),
-
-                        new window.kakao.maps.LatLng(35.66221078, 128.41551099),
-                        new window.kakao.maps.LatLng(35.66209088, 128.41552013),
-                        new window.kakao.maps.LatLng(35.66198055, 128.41546054),
-
-                        new window.kakao.maps.LatLng(35.66190033, 128.41534022),
-                        new window.kakao.maps.LatLng(35.66184015, 128.41518044),
-                        new window.kakao.maps.LatLng(35.66181011, 128.41498022),
-
-                        new window.kakao.maps.LatLng(35.66182544, 128.41477033),
-                        new window.kakao.maps.LatLng(35.66188041, 128.41456055),
-                        new window.kakao.maps.LatLng(35.66196022, 128.41437044),
-
-                        new window.kakao.maps.LatLng(35.66204412, 128.41418598),
-                        new window.kakao.maps.LatLng(35.66212488, 128.41402077),
-                        new window.kakao.maps.LatLng(35.66218448, 128.41384105),
-                    ];
-
-
-
-
-                    const polyline = new window.kakao.maps.Polyline({
-                        path: linePath,
-                        strokeWeight: 10,
-                        strokeColor: "#EF895A",
-                        strokeOpacity: 0.9,
-                        strokeStyle: "solid",
+                    const overlay = new window.kakao.maps.CustomOverlay({
+                        position: from,
+                        content: arrowSVG(angle),
+                        yAnchor: 0.5,
+                        xAnchor: 0.5,
                     });
 
-                    polyline.setMap(map);
+                    overlay.setMap(map);
+                    overlays.push(overlay);
                 }
+                const startOverlay = new window.kakao.maps.CustomOverlay({
+                    position: linePath[0], // 시작 좌표
+                    content: startPointOverlay,
+                    xAnchor: 0.5,
+                    yAnchor: 0.5,
+                });
+
+                startOverlay.setMap(map);
             });
         };
 
-        if(!window.kakao?.maps) {
+        if (!window.kakao?.maps) {
             const script = document.createElement("script");
             script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAO_MAP_KEY}&autoload=false`;
             script.async = true;
             document.head.appendChild(script);
-
             script.onload = onload;
-        } else onload();
+        } else {
+            onload();
+        }
 
-        //  useEffect cleanup (언마운트 시 추적 중지)
+        /** cleanup */
         return () => {
-            if (watchIdRef.current !== null) {
+            if (watchIdRef.current) {
                 navigator.geolocation.clearWatch(watchIdRef.current);
             }
+            polylineRef.current?.setMap(null);
+            overlays.forEach(o => o.setMap(null));
         };
     }, []);
 
@@ -146,7 +197,6 @@ const Walk = () => {
             <MapContainer ref={mapRef} />
             <WalkInfoCard />
         </S.Wrapper>
-
     );
 };
 

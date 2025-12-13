@@ -4,6 +4,66 @@ import WalkStartCard from "./components/WalkStartCard";
 import {routeAtom} from "@/atoms/atoms.ts";
 import {useAtom} from "jotai";
 
+const arrowSVG = (angle: number) => `
+  <div style="
+    transform: rotate(${-angle}deg);
+    width: 32px;
+    height: 32px;
+  ">
+    <svg
+      fill="none"
+      viewBox="0 0 24 24"
+      width="32"
+      height="32"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <!-- white outline -->
+      <path
+        d="m8.25 4.5 7.5 7.5-7.5 7.5"
+        stroke="white"
+        stroke-width="7"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+
+      <!-- main arrow -->
+      <path
+        d="m8.25 4.5 7.5 7.5-7.5 7.5"
+        stroke="#008ad4"
+        stroke-width="4"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  </div>
+`;
+
+
+const startPointOverlay = `
+  <div style="display:flex; flex-direction: column; gap: 5px; justify-content: center; align-items:center;">
+    <div style="
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #2E7DFF;
+      border: 3px solid white;
+    "></div>
+    <div style="
+      margin-left: 6px;
+      font-size: 12px;
+      font-weight: bold;
+      color: #2E7DFF;
+      background: white;
+      padding: 2px 6px;
+      border-radius: 6px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    ">
+      START
+    </div>
+  </div>
+`;
+
 
 const WalkStart = () => {
     const [route, setRoute] = useAtom(routeAtom);
@@ -13,6 +73,14 @@ const WalkStart = () => {
     const mapInstance = useRef<any>(null); // 지도 인스턴스 저장
     const userMarkerRef = useRef<any>(null); // 사용자 위치 마커 저장
     const watchIdRef = useRef<number | null>(null); // watchPosition ID 저장
+    const overlays = [];
+
+    /** 두 좌표 사이 각도 계산 */
+    const getAngle = (p1, p2) => {
+        const dx = p2.getLng() - p1.getLng();
+        const dy = p2.getLat() - p1.getLat();
+        return (Math.atan2(dy, dx) * 180) / Math.PI;
+    };
 
     const onload = () => {
         window.kakao.maps.load(() => {
@@ -120,8 +188,37 @@ const WalkStart = () => {
         linePath.forEach((p) => bounds.extend(p));
         map.setBounds(bounds);
 
+        /** 방향 화살표 마커 */
+        for (let i = 0; i < linePath.length - 1; i++) {
+            const from = linePath[i];
+            const to = linePath[i + 1];
+            const angle = getAngle(from, to);
+
+            const overlay = new window.kakao.maps.CustomOverlay({
+                position: from,
+                content: arrowSVG(angle),
+                yAnchor: 0.5,
+                xAnchor: 0.5,
+            });
+
+            overlay.setMap(map);
+            overlays.push(overlay);
+        }
+
+        const startOverlay = new window.kakao.maps.CustomOverlay({
+            position: linePath[0], // 시작 좌표
+            content: startPointOverlay,
+            xAnchor: 0.5,
+            yAnchor: 0.5,
+        });
+
+        startOverlay.setMap(map);
+
+
         return () => {
             polyline.setMap(null);
+            overlays.forEach(o => o.setMap(null));
+            startOverlay.setMap(null);
             onload();
         }
     }, [route]);
