@@ -15,6 +15,8 @@ import Course from "./Course";
 import CustomSlider from "./CustomSlider";
 import HotPlace from "./HotPlace";
 import PlaceSearchCard from "./PlaceSearchCard";
+import {useNavigate} from "react-router-dom";
+import {Link} from "@/components/common/Link.tsx";
 
 const hotPlaceData = [
   { name: "홈파인 카페", category: "카페", distance: "3분 거리", imgUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNuQN7z7rNlkUVrejKyNYOfq4mPOQXvNPAZA&s" },
@@ -25,6 +27,7 @@ const hotPlaceData = [
 
 ];
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const exampleRoutes = [
   [
     { lat: 35.662184, lng: 128.417200 },
@@ -80,6 +83,7 @@ export const exampleRoutes = [
 
 
 const WalkStartCard = () => {
+  const navigate = useNavigate();
   const [step, setStep] = useState(1);
   const [value, setValue] = useState(90);
 
@@ -202,9 +206,11 @@ const WalkStartCard = () => {
               견주와 반려견을 모두 고려한 경로에요.
               </DescriptionText>
           </TextArea>
-          <ButtonArea onClick={() => alert("산책 시작!")}>
-            <ButtonText>산책 시작하기</ButtonText>
-          </ButtonArea>
+          <Link to={"/walk"}>
+            <ButtonArea>
+              <ButtonText>산책 시작하기</ButtonText>
+            </ButtonArea>
+          </Link>
         </Card>
       )}
         </>

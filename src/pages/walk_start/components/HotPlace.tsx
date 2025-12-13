@@ -21,7 +21,7 @@ const HotPlace = ({ imgUrl, name, category, distance }: HotPlaceProps) => {
     return (
         <CourseCard> 
             {/* MapThumb 대신 ImageThumb 사용 */}
-            <ImageThumb imgUrl={imgUrl} /> 
+            <ImageThumb $imgUrl={imgUrl} />
             
             <LabelRow>
                 <LabelLeft>{name}</LabelLeft> 

@@ -84,7 +84,7 @@ const Home: React.FC = () => {
             </div>
         </div>
         <div className="walk_button">
-            <Link to={"/walk"} className="button">산책하기</Link>
+            <Link to={"/walk/start"} className="button">산책하기</Link>
         </div>
         <div className="week_record">
             <WalkRecord />

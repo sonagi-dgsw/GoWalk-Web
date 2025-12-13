@@ -26,7 +26,7 @@ export const Container = styled.div`
     gap: 20px;
     position: absolute;
     background-color: white;
-    z-index: 2;
+    z-index: 30;
     ${fadeOutAnimation("2s")}
 `;
 
@@ -41,7 +41,7 @@ export const Title = styled.h3`
 export const ProgressBar = styled.div`
     margin-top: 10px;
     width: 160px;
-    height: 5px;
+    height: 7px;
     background-color: #ccc;
     border-radius: 5px;
     overflow: hidden;
@@ -58,7 +58,7 @@ export const progressAnimation = keyframes`
 
 export const Progress = styled.div`
     width: 0;
-    height: 5px;
+    height: 100%;
     background-color: #5AAAEF;
     animation: ${progressAnimation} 1.2s ease-in-out forwards;
 `;

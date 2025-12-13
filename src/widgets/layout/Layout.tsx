@@ -14,6 +14,7 @@ import {fetchUser} from "@/axios/fetchUser.ts";
 // Navigation 보여주지 않는 페이지 목록
 const independent_pages = [
     "/walk",
+    "/walk/start",
     "/walk/finish",
     "/signin",
     "/member_emailaddress",
@@ -51,7 +52,6 @@ const Layout = () => {
             setIsLoading(false);
         }}, 2000);
         if(!user && !public_url.includes(pathname)) {
-            console.log("wtf")
             // @ts-ignore
             setUser(fetchUser());
         }

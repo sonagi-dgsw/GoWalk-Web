@@ -11,12 +11,7 @@ const WalkStart = () => {
 
 
     useEffect(() => {
-        const script = document.createElement("script");
-        script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAO_MAP_KEY}&autoload=false`;
-        script.async = true;
-        document.head.appendChild(script);
-
-        script.onload = () => {
+        const onload = () => {
             window.kakao.maps.load(() => {
                 if (navigator.geolocation && mapRef.current) {
                     // 기본 지도 초기화 (서울 중심)
@@ -73,6 +68,15 @@ const WalkStart = () => {
             });
         };
 
+        if(!window.kakao?.maps) {
+            const script = document.createElement("script");
+            script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAO_MAP_KEY}&autoload=false`;
+            script.async = true;
+            document.head.appendChild(script);
+
+            script.onload = onload;
+        } else onload();
+
         //  useEffect cleanup (언마운트 시 추적 중지)
         return () => {
             if (watchIdRef.current !== null) {
@@ -82,7 +86,7 @@ const WalkStart = () => {
     }, []);
 
     return (
-        <div style={{ position: "relative", height: "100vh" }}>
+        <div style={{ position: "relative", height: "100%" }}>
             <MapContainer ref={mapRef} />
             <WalkStartCard />
         </div>

@@ -6,8 +6,8 @@ interface RangeInputProps extends DetailedHTMLProps<InputHTMLAttributes<HTMLInpu
 }
 
 export const MapContainer = styled.div`
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
 `;
 
@@ -229,14 +229,13 @@ export const ThumbContainer = styled.div<{ valuePercent: number }>`
 
 export const ThumbLabel = styled.div`
   box-sizing: border-box;
-  padding: 12px 26px; 
+  padding: 3px 6px; 
   background: #FFFFFF;
   border: 4px solid #5AAAEF;
-  border-radius: 99px;
+  border-radius: 20px;
   
-  font-family: 'Pretendard';
+  font-family: Pretendard, -apple-system, sans-serif;
   font-weight: 700;
-  font-size: 20px;
   line-height: 28px;
   color: #000000;
   white-space: nowrap;
@@ -262,7 +261,7 @@ export const AIText = styled.div<{ startPercent: number }>`
   z-index: 5;
 `;
 
-export const RangeInput = styled.input.attrs<RangeInputProps>((props) => ({}))`
+export const RangeInput = styled.input.attrs<RangeInputProps>(() => ({}))`
     appearance: none;
     width: 100%;
     height: 10px;
@@ -352,10 +351,10 @@ export const CategoryText = styled.p`
     */
 `;
 
-export const ImageThumb = styled.div<{ imgUrl: string }>`
+export const ImageThumb = styled.div<{ $imgUrl: string }>`
   height: 120px;
   border-radius: 10px 10px 0 0;
-  background-image: url(${props => props.imgUrl});
+  background-image: url(${props => props.$imgUrl});
   background-size: cover;
   background-position: center;
 `;
