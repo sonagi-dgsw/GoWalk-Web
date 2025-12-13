@@ -37,3 +37,28 @@ export const Logo = styled.img`
 
 export const Title = styled.h3`
 `;
+
+export const ProgressBar = styled.div`
+    margin-top: 10px;
+    width: 160px;
+    height: 5px;
+    background-color: #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+`;
+
+export const progressAnimation = keyframes`
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+`;
+
+export const Progress = styled.div`
+    width: 0;
+    height: 5px;
+    background-color: #5AAAEF;
+    animation: ${progressAnimation} 1.2s ease-in-out forwards;
+`;

@@ -51,6 +51,7 @@ const Layout = () => {
             setIsLoading(false);
         }}, 2000);
         if(!user && !public_url.includes(pathname)) {
+            console.log("wtf")
             // @ts-ignore
             setUser(fetchUser());
         }
