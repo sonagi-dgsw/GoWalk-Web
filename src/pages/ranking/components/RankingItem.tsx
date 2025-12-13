@@ -1,10 +1,10 @@
 import guest from "../images/guest.png";
 import React from "react";
-import {RankingProps} from "../types/Ranking_type.tsx";
+import {Ranking} from "@/pages/ranking/types/Ranking_type.tsx";
 
 interface IRankingItemProps {
-    item: RankingProps;
-    renderValue: (item: RankingProps) => string;
+    item: Ranking;
+    renderValue: (item: Ranking) => string;
 }
 
 const RankingItem: React.FC<IRankingItemProps> = ({item, renderValue}) => {
@@ -25,8 +25,8 @@ const RankingItem: React.FC<IRankingItemProps> = ({item, renderValue}) => {
                     />
                 </div>
                 <div className="info-text">
-                    <div className="name">{item.id}</div>
-                    <div className="meta">{item.name}</div>
+                    <div className="name">{item.username}</div>
+                    <div className="meta">{item.username}</div>
                 </div>
             </div>
             <div className="value">{renderValue(item)}</div>

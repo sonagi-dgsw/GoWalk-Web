@@ -1,47 +1,69 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import "./styles/Ranking.css";
 import "../home/styles/Home.css";
-import { RankingProps } from "./types/Ranking_type";
 import guest from "./images/guest.png";
 import RankingItem from "./components/RankingItem.tsx";
 import logo from "../home/images/산책가자.png";
 import setting from "../home/images/Vector.png";
 import {Link} from "react-router";
-
-const rankingData: RankingProps[] = [
-    { id: "권대형 좋아해", name: "광진", distance: 34.0, time: 15, isMe: false, rank: 2 },
-    { id: "권대형 사랑해", name: "광진동", distance: 35.0, time: 14, isMe: false, rank: 1 },
-    { id: "권대형 사모해", name: "광진", distance: 33.0, time: 13, isMe: false, rank: 3 },
-    { id: "大型最高", name: "길동", distance: 2.7, time: 12, isMe: false, rank: 4 },
-    { id: "大型最高", name: "길동", distance: 2.7, time: 12, isMe: false, rank: 5 },
-    { id: "大型最高", name: "길동", distance: 2.7, time: 12, isMe: false, rank: 6 },
-    { id: "大型最高", name: "길동", distance: 2.7, time: 12, isMe: false, rank: 7 },
-    { id: "大型最高", name: "길동", distance: 2.7, time: 12, isMe: false, rank: 8 },
-    { id: "大型最高", name: "길동", distance: 2.7, time: 12, isMe: false, rank: 9 },
-    { id: "大型最高", name: "길동", distance: 2.7, time: 12, isMe: false, rank: 10 },
-    {
-        id: "권대형",
-        name: "권대형입니다.",
-        distance: 0.2,
-        time: 3,
-        isMe: true,
-        rank: 12
-    }
-];
+import {fetchDistanceRanking, fetchTimeRanking} from "@/pages/ranking/api/fetchTimeRanking.ts";
+import {useAtomValue} from "jotai/index";
+import {userAtom} from "@/atoms/atoms.ts";
+import {Ranking} from "@/pages/ranking/types/Ranking_type.tsx";
 
 const Ranking: React.FC = () => {
+    const user = useAtomValue(userAtom);
     const [mode, setMode] = useState<"distance" | "time">("distance");
+    const [rankingData, setRankingData] = useState<Ranking[]>();
+
+    const fetchRankingData = async () => {
+        let data;
+        if(mode == "time") {
+            data = await fetchTimeRanking();
+        } else {
+            data = await fetchDistanceRanking();
+        }
+        data = data.map((u) => {
+            if(u.username == user.username) {
+                return {
+                    ...u,
+                    isMe: true
+                }
+            } else {
+                return {
+                    ...u,
+                    isMe: false
+                }
+            }
+        })
+        setRankingData(data);
+    }
+
+    useEffect(() => {
+        if(user){
+            fetchRankingData();
+        }
+    }, [user, mode]);
+    if(user == null || rankingData == null) return;
 
     const sortedData = [...rankingData].sort((a, b) =>
-        mode === "distance" ? b.distance - a.distance : b.time - a.time
-    );
+        mode === "distance" ? b.walkDistance - a.walkDistance : b.walkDay - a.walkDay
+    ).map((d, i) => ({...d, rank: i+1}));
 
     const top3 = sortedData.slice(0, 3);
-    const others = sortedData.slice(3);
+    while(top3.length < 3) {
+        top3.push({
+            username: "-",
+            walkDistance: 0,
+            walkDay: 0,
+            isMe: false,
+            rank: 0
+        })
+    }
     const myRanking = sortedData.find(item => item.isMe);
 
-    const renderValue = (item: RankingProps) =>
-        mode === "distance" ? `${item.distance.toFixed(1)}km` : `${item.time}시간`;
+    const renderValue = (item: Ranking) =>
+        mode === "distance" ? `${item.walkDistance.toFixed(1)}km` : `${item.walkDay}일`;
 
     return (
         <div className="container">
@@ -75,11 +97,11 @@ const Ranking: React.FC = () => {
             <div className="top3">
                 {[top3[1], top3[0], top3[2]].map((item, i) => {
                     if (!item) return null;
-                    const rank = i === 0 ? 2 : i === 1 ? 1 : 3;
+                    const rank = i == 0 ? 2 : i == 1 ? 1 : 3;
                     const offsetY = rank === 1 ? "-12px" : "8px";
                     return (
                         <div
-                            key={item.id}
+                            key={i}
                             className="rank"
                             style={{ transform: `translateY(${offsetY})` }}
                         >
@@ -95,7 +117,7 @@ const Ranking: React.FC = () => {
                                     }}
                                 />
                             </div>
-                            <div className="name">{item.id}</div>
+                            <div className="name">{item.username}</div>
                             <div className="value">{renderValue(item)}</div>
                         </div>
                     );
@@ -105,7 +127,7 @@ const Ranking: React.FC = () => {
             <div className="list">
                 {myRanking && <RankingItem item={myRanking} renderValue={renderValue} />}
                 {sortedData.map((item) => (
-                    <RankingItem key={item.id} item={item} renderValue={renderValue} />
+                    <RankingItem key={item.username} item={item} renderValue={renderValue} />
                 ))}
             </div>
         </div>

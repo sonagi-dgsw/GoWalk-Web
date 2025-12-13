@@ -1,8 +1,7 @@
-export type RankingProps = {
-  id: string;
-  name: string;
-  distance: number;
-  time: number;
+export type Ranking = {
+  username: string;
+  walkDistance: number;
+  walkDay: number;
   isMe: boolean;
   rank: number;
 };
