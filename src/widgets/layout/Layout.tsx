@@ -2,14 +2,13 @@ import * as S from "./styles/layoutStyle.ts";
 import "./styles/reset.css";
 import {Outlet, useLocation} from "react-router";
 import Navigation from "../navigation/Navigation.tsx";
-import GoWalkAxios from "@/axios/GoWalkAxios.ts";
 import {useAtom} from "jotai";
 import {userAtom} from "@/atoms/atoms.ts";
 import {Suspense, useEffect, useState} from "react";
 import Loading from "@/widgets/loading/Loading.tsx";
-import {Cookies} from "react-cookie";
-import {useNavigate} from "react-router-dom";
 import {fetchUser} from "@/axios/fetchUser.ts";
+import banner_left from "@assets/banner_left.png";
+import banner_right from "@assets/banner_right.png";
 
 // Navigation 보여주지 않는 페이지 목록
 const independent_pages = [
@@ -58,6 +57,8 @@ const Layout = () => {
     }, [])
 
     return <S.Wrapper>
+        <S.Overlay />
+        <S.Banner alt="banner-left" src={banner_left} />
         <S.Container $showNavigation={showNavigation}>
             {isLoading && (
                 <Loading />
@@ -69,6 +70,7 @@ const Layout = () => {
             </Suspense>
             {showNavigation && <Navigation />}
         </S.Container>
+        <S.Banner alt="banner-left" src={banner_right} />
     </S.Wrapper>
 }
 

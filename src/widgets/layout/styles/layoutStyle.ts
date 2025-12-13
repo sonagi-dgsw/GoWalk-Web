@@ -6,6 +6,20 @@ export const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #F2F2F2;
+`;
+
+export const Overlay = styled.div`
+    background-color: rgba(0,0,0,0.03);
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+`
+
+export const Banner = styled.img`
+    flex: 1;
+    height: 100vh;
+    object-fit: cover;
 `;
 
 export const Container = styled.div<{$showNavigation: boolean}>`
@@ -18,6 +32,7 @@ export const Container = styled.div<{$showNavigation: boolean}>`
     display: grid;
     position: relative;
     grid-template-rows: 1fr ${props => props.$showNavigation ? "80px" : 0};
+    background-color: white;
     box-shadow: 2px 4px 7px 0px rgba(0,0,0,0.1);
     -webkit-box-shadow: 2px 4px 7px 0px rgba(0,0,0,0.1);
     -moz-box-shadow: 2px 4px 7px 0px rgba(0,0,0,0.1);
