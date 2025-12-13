@@ -3,6 +3,7 @@ import { MapContainer } from "./styles/styles";
 import WalkStartCard from "./components/WalkStartCard";
 import {routeAtom} from "@/atoms/atoms.ts";
 import {useAtom} from "jotai";
+import marker from "@assets/marker.png";
 
 const arrowSVG = (angle: number) => `
   <div style="
@@ -94,9 +95,8 @@ const WalkStart = () => {
                 mapInstance.current = map;
 
                 // 마커 이미지 설정
-                const imageSrc =
-                    "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png"; // 마커 이미지 URL
-                const imageSize = new window.kakao.maps.Size(40, 42);
+                const imageSrc = marker; // 마커 이미지 URL
+                const imageSize = new window.kakao.maps.Size(70, 76);
                 const imageOption = { offset: new window.kakao.maps.Point(20, 42) };
                 const markerImage = new window.kakao.maps.MarkerImage(
                     imageSrc,

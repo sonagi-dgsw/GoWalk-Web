@@ -1,9 +1,76 @@
 import * as S from "./styles/walkFinishStyle.ts";
 import Slide from "../../../components/slide/Slide.tsx";
 import {useNavigate} from "react-router";
+import {useEffect, useRef} from "react";
 
 const WalkFinishPage = () => {
     const navigate = useNavigate();
+
+    const KAKAO_MAP_KEY = import.meta.env.VITE_KAKAO_MAP_KEY;
+    const mapRef = useRef<HTMLDivElement | null>(null);
+    const mapInstance = useRef<any>(null); // 지도 인스턴스 저장
+
+    let polyline = null;
+    const polylineRef = useRef<any>(null);
+
+    const onload = () => {
+        window.kakao.maps.load(() => {
+            if (navigator.geolocation && mapRef.current) {
+                // 기본 지도 초기화 (서울 중심)
+                const mapOptions = {
+                    center: new window.kakao.maps.LatLng(37.5665, 126.9780),
+                    level: 4,
+                    draggable: false,
+                    zoomable: false,
+                };
+                const map = new window.kakao.maps.Map(mapRef.current!, mapOptions);
+                mapInstance.current = map;
+
+                /** 경로 */
+                const linePath = [
+                    { lat: 35.317190285088, lng: 129.00304170840155 },
+                    { lat: 35.31726939771425, lng: 129.00316185288472 },
+                    { lat: 35.31830924640805, lng: 129.0019973155924 },
+                    { lat: 35.31797054397812, lng: 129.00149969644477 },
+                    { lat: 35.317415922679885, lng: 129.002068745145 },
+                    { lat: 35.316934641667494, lng: 129.00147416233088 },
+                    { lat: 35.31641477776775, lng: 129.00212102327515 },
+                    { lat: 35.317190285088, lng: 129.00304170840155 },
+                ].map(p => new window.kakao.maps.LatLng(p.lat, p.lng));
+
+                map.setCenter(linePath[0]);
+
+                /** Polyline */
+                polyline = new window.kakao.maps.Polyline({
+                    path: linePath,
+                    strokeWeight: 10,
+                    strokeColor: "#5AAAEF",
+                    strokeStyle: "solid",
+                    strokeOpacity: 0.9,
+                });
+                polyline.setMap(map);
+                polylineRef.current = polyline;
+            }
+        });
+    };
+
+    useEffect(() => {
+        if(!window.kakao?.maps) {
+            const script = document.createElement("script");
+            script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAO_MAP_KEY}&autoload=false`;
+            script.async = true;
+            document.head.appendChild(script);
+
+            script.onload = onload;
+        } else onload();
+
+        //  useEffect cleanup (언마운트 시 추적 중지)
+        return () => {
+            if(polyline){
+                polyline?.setMap(null);
+            }
+        };
+    }, []);
 
     const onFinish = () => {
         navigate("/");
@@ -17,7 +84,7 @@ const WalkFinishPage = () => {
             <S.Card>
                 <S.CardTitle>산책 요약</S.CardTitle>
 
-                <S.RouteMap />
+                <S.RouteMap ref={mapRef} />
 
                 <S.Stat>
                     <S.StatTitle>산책 시간</S.StatTitle>

@@ -3,6 +3,7 @@ import { MapContainer } from "./styles/styles";
 
 import WalkInfoCard from "./components/WalkInfoCard";
 import * as S from "./styles/styles.ts";
+import marker from "@assets/marker.png";
 
 const arrowSVG = (angle: number) => `
   <div style="
@@ -101,8 +102,8 @@ const Walk = () => {
                     map,
                     position: map.getCenter(),
                     image: new window.kakao.maps.MarkerImage(
-                        "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png",
-                        new window.kakao.maps.Size(40, 42),
+                        marker,
+                        new window.kakao.maps.Size(70, 76),
                         { offset: new window.kakao.maps.Point(20, 42) }
                     ),
                 });
