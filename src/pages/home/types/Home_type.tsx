@@ -10,3 +10,10 @@ export type HomeProps = {
   useKcal: number;
   consecutiveDays: number;
 };
+
+export interface IProfileApiResponse {
+  data: {
+    walkDistance: number;
+    walkDay: number;
+  }
+}

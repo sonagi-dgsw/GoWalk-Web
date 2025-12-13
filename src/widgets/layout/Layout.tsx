@@ -26,6 +26,18 @@ const independent_pages = [
     "/member_gender"
 ]
 
+const public_url = [
+    "/signin",
+    "/member_emailaddress",
+    "/member_certification",
+    "/member_name",
+    "/member_petname",
+    "/member_petsort",
+    "/member_petage",
+    "/member_petweight",
+    "/member_gender"
+]
+
 const Layout = () => {
     const [user, setUser] = useAtom(userAtom);
     const [isLoading, setIsLoading] = useState(true);
@@ -38,7 +50,8 @@ const Layout = () => {
         setTimeout(() => {{
             setIsLoading(false);
         }}, 2000);
-        if(!user) {
+        if(!user && !public_url.includes(pathname)) {
+            // @ts-ignore
             setUser(fetchUser());
         }
     }, [])
