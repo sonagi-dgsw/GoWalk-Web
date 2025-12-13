@@ -6,6 +6,11 @@ export const Item = styled.div`
   gap: 12px;
   padding: 12px 24px;
     cursor: pointer;
+    &:last-child {
+        span {
+            color: red;
+        }
+    }
 `;
 
 export const Icon = styled.div<{ url: string }>`

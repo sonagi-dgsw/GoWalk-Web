@@ -5,9 +5,15 @@ import { useState } from "react";
 import {Link} from "react-router";
 import logo from "@/pages/home/images/산책가자.png";
 import setting from "@/pages/home/images/Vector.png";
+import {Cookies} from "react-cookie";
+import {useAtom} from "jotai";
+import {userAtom} from "@/atoms/atoms.ts";
+import bell from "@assets/setting/bell.png";
 
 function Setting() {
     const [isAlarmOn, setIsAlarmOn] = useState(false);
+    const [_, setUser] = useAtom(userAtom);
+    const  cookies = new Cookies();
   const onClick = () => {
     if (isAlarmOn) {
       setIsAlarmOn(false);
@@ -17,6 +23,15 @@ function Setting() {
         setIsAlarmOn(true);
     }
   }
+
+  const logout = () => {
+    cookies.remove("accessToken");
+    cookies.remove("refreshToken");
+    // @ts-ignore
+    setUser(null);
+    window.location.href = "/signin";
+  }
+
   return (
     <S.Container>
     <div className="header">
@@ -31,7 +46,7 @@ function Setting() {
       <S.Header>설정</S.Header>
         <S.SearchBox color={isAlarmOn ? "#5AAAEF" : undefined}>
           <div style={{ display: "flex", alignItems: "center", gap: 8}}>
-            <S.Bell src="src/assets/setting/bell.png"/>
+            <S.Bell src={bell}/>
             <span>알람 설정</span>
           </div>
           <div style={{ display: "flex", alignItems: "center",position:"relative",left:"12px" }}>
@@ -47,7 +62,7 @@ function Setting() {
         <SettingItem icon="src/assets/setting/help.png" label="고객센터" />
         <SettingItem icon="src/assets/setting/paper.png" label="이용 약관" />
         <SettingItem icon="src/assets/setting/policy.png" label="개인정보 처리방침" />
-        <SettingItem icon="src/assets/setting/logout.png" label="로그아웃" />
+        <SettingItem icon="src/assets/setting/logout.png" label="로그아웃" onClick={logout} />
       </S.Content>
     </S.Container>
   );

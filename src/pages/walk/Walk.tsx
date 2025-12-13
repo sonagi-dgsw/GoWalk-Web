@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import {useEffect, useRef} from "react";
 import { MapContainer } from "./styles/styles";
 
 import WalkInfoCard from "./components/WalkInfoCard";

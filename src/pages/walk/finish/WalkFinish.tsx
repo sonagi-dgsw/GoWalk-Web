@@ -1,10 +1,12 @@
 import * as S from "./styles/walkFinishStyle.ts";
 import Slide from "../../../components/slide/Slide.tsx";
 import {useNavigate} from "react-router";
-import {useEffect, useRef} from "react";
+import {useEffect, useRef, useState} from "react";
 
 const WalkFinishPage = () => {
     const navigate = useNavigate();
+    const [distanceFeedback, setDistanceFeedback] = useState(3);
+    const [moodFeedback, setMoodFeedback] = useState(3);
 
     const KAKAO_MAP_KEY = import.meta.env.VITE_KAKAO_MAP_KEY;
     const mapRef = useRef<HTMLDivElement | null>(null);
@@ -106,9 +108,9 @@ const WalkFinishPage = () => {
             <S.Card>
                 <S.CardTitle>오늘 산책 어땠나요?</S.CardTitle>
 
-                <Slide label={'산책 거리'} messages={['짧다', '적당하다', '길다']} />
+                <Slide value={distanceFeedback} setFn={setDistanceFeedback} label={'산책 거리'} messages={['짧다', '적당하다', '길다']} />
 
-                <Slide label={'분위기'} messages={['한적하다', '적당하다', '시끄럽다']} />
+                <Slide value={moodFeedback} setFn={setMoodFeedback} label={'분위기'} messages={['한적하다', '적당하다', '시끄럽다 ']} />
             </S.Card>
         </S.Container>
         <S.FinishButton onClick={onFinish}>

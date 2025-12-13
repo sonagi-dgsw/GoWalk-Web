@@ -15,7 +15,6 @@ export const SlideBar = styled.input.attrs({
     min: 1,
     max: 5,
     step: 1,
-    defaultValue: 3
 })`;
     margin-top: 20px;
     width: 100%;

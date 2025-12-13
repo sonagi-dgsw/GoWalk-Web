@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import {
   Card,
   TopRow,
@@ -27,6 +27,21 @@ const WalkInfoCard = () => {
 
   const [showStopModal, setShowStopModal] = useState(false);
   const [showEndModal, setShowEndModal] = useState(false);
+  const [time, setTime] = useState(0);
+
+  useEffect(() => {
+    let intervalId = null;
+
+    intervalId = setInterval(() => {
+      setTime(prev => prev+1);
+    }, 1000);
+
+    return () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+      }
+    };
+  }, [])
 
   const handleStop = () => setShowStopModal(true);
   const handleEnd = () => setShowEndModal(true);
@@ -50,25 +65,25 @@ const WalkInfoCard = () => {
     <>
       <Card>
         <TopRow>
-          <Time>54:07:11</Time>
+          <Time>{Math.floor(time / 3600) % 24}:{(Math.floor(time / 60) % 60).toString().padStart(2, "0")}:{(time % 60).toString().padStart(2, "0")}</Time>
           <Weather>
             <WeatherIcon>☁️</WeatherIcon>
-            <Temp>36°C</Temp>
+            <Temp>- °C</Temp>
           </Weather>
         </TopRow>
 
         <MiddleRow>
           <DistanceBox>
-            <Distance>3.1km</Distance>
+            <Distance>- km</Distance>
             <Label>남음</Label>
           </DistanceBox>
           <Divider />
           <StatusBox>
             <Status>
-              미세먼지 <Bad>나쁨(86µg/m²)</Bad>
+              미세먼지 <Bad>-(-µg/m²)</Bad>
             </Status>
             <Status>
-              자외선지수 <Good>좋음(0)</Good>
+              자외선지수 <Good>-(-)</Good>
             </Status>
           </StatusBox>
         </MiddleRow>
