@@ -1,23 +1,24 @@
 import {createBrowserRouter} from "react-router";
-import SignIn from "@/pages/signin/SignIn.tsx";
 import Layout from "@/widgets/layout/Layout.tsx";
-import WalkFinishPage from "@/pages/walk/finish/WalkFinish.tsx";
 
-import Member_emailaddress from "@/pages/member/Member_emailaddress.tsx";
-import Member_certification from "@/pages/member/Member_certification.tsx";
+import Walk from "../pages/walk/Walk.tsx";
+import WalkFinishPage from "@/pages/walk/finish/WalkFinish.tsx";
+import WalkStart from "../pages/walk_start/WalkStart.tsx";
+
 import Member_name from "@/pages/member/Member_name.tsx";
 import Member_petname from "@/pages/member/Member_petname.tsx";
 import Member_petsort from "@/pages/member/Member_petsort.tsx";
+import Member_emailaddress from "@/pages/member/Member_emailaddress.tsx";
+import Member_certification from "@/pages/member/Member_certification.tsx";
 import Member_petage from "@/pages/member/Member_petage.tsx";
 import Member_petweight from "../pages/member/Member_petweight.tsx";
 import Member_gender from "../pages/member/Member_gender.tsx";
 
 import ErrorPage from "@/pages/error/ErrorPage.tsx";
 import NotFoundPage from "@/pages/error/NotFoundPage.tsx";
-import Walk from "@/pages/walk/Walk.tsx";
 import Ranking from "@/pages/ranking/Ranking.tsx";
 import Home from "@/pages/home/Home.tsx";
-import Setting from "@/pages/setting/setting.tsx";
+import SignIn from "@/pages/signin/SignIn.tsx";
 
 const router = createBrowserRouter([
     {
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
                     {
                         path: "finish",
                         Component: WalkFinishPage,
+                    },
+                    {
+                        path: "start",
+                        Component: WalkStart,
                     }
                 ]
             },
