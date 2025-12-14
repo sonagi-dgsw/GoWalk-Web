@@ -20,6 +20,9 @@ import loadingGIF from "@assets/loading.gif";
 import {useAtom} from "jotai";
 import {routeAtom, userAtom} from "@/atoms/atoms.ts";
 import {useAtomValue} from "jotai/index";
+import ThemeInput from "@/pages/walk_start/components/ThemeInput.tsx";
+import GoWalkAxios from "@/axios/GoWalkAxios.ts";
+import {IAiRouteResponse} from "@/pages/walk_start/types/AiRouteResponse.ts";
 
 const hotPlaceData = [
   { name: "홈파인 카페", category: "카페", distance: "3분 거리", imgUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNuQN7z7rNlkUVrejKyNYOfq4mPOQXvNPAZA&s" },
@@ -84,36 +87,43 @@ export const exampleRoutes = [
   ]
 ];
 
-const dummyRoute = [
-  { lat: 35.317190285088, lng: 129.00304170840155 },
-  { lat: 35.31726939771425, lng: 129.00316185288472 },
-  { lat: 35.31830924640805, lng: 129.0019973155924 },
-  { lat: 35.31797054397812, lng: 129.00149969644477 },
-  { lat: 35.317415922679885, lng: 129.002068745145 },
-  { lat: 35.316934641667494, lng: 129.00147416233088 },
-  { lat: 35.31641477776775, lng: 129.00212102327515 },
-  { lat: 35.317190285088, lng: 129.00304170840155 },
-];
-
 const WalkStartCard = () => {
   const user = useAtomValue(userAtom);
   const [step, setStep] = useState(1);
-  const [value, setValue] = useState(90);
+  const [distance, setDistance] = useState(90);
+  const [theme, setTheme] = useState("");
   const [isLoading, setLoading] = useState(false);
   const [_, setRoute] = useAtom(routeAtom);
 
   const generateRoute = async () => {
+    if(isLoading) return;
     setLoading(true);
 
-    // Generate Route...
+    const distance_limit_m = distance * 60 * 1.4;
+    const start = {
+      lat: document.body["latitude"] as number,
+      lng: document.body["longitude"] as number
+    }
 
-    setTimeout(() => {
+    const routeRes = await GoWalkAxios.post<IAiRouteResponse>("/api/walk/ai-route", {
+      start,
+      distance_limit_m,
+      theme
+    });
+
+    if(routeRes.status != 200) {
+      alert("경로 생성 실패.")
       setLoading(false);
-      setStep(6);
+      return;
+    }
 
-      // @ts-ignore
-      setRoute(dummyRoute);
-    }, 3000)
+    const data = routeRes.data.data;
+
+    // @ts-ignore
+    setRoute(data.waypoints);
+
+    setLoading(false);
+    setStep(7);
   }
 
   return (
@@ -168,8 +178,8 @@ const WalkStartCard = () => {
             </DescriptionText>
           </TextArea>
           <CustomSlider
-            value={value}
-            onChange={(v) => setValue(v)}
+            value={distance}
+            onChange={(v) => setDistance(v)}
             orangeStart={50}
             orangeEnd={60}
           />
@@ -221,9 +231,26 @@ const WalkStartCard = () => {
 
           <Row>
             <CancelButton onClick={() => setStep(4)}>이전으로</CancelButton>
-            <ConfirmButton onClick={() => generateRoute()}>없어요</ConfirmButton>
+            <ConfirmButton onClick={() => setStep(6)}>없어요</ConfirmButton>
           </Row>
         </Card>
+      )}
+
+      {step === 6 && (
+          <Card>
+            <TextArea>
+              <TitleText>
+                원하는 분위기가 있다면?
+              </TitleText>
+            </TextArea>
+
+            <ThemeInput value={theme} onChange={(v) => setTheme(v)} />
+
+            <Row>
+              <CancelButton onClick={() => setStep(5)}>이전으로</CancelButton>
+              <ConfirmButton onClick={() => generateRoute()}>완료</ConfirmButton>
+            </Row>
+          </Card>
       )}
 
       {isLoading && (
@@ -233,7 +260,7 @@ const WalkStartCard = () => {
           </LoadingOverlay>
       )}
 
-      {step === 6 && (
+      {step === 7 && (
         <Card>
           <TextArea>
             <TitleText>

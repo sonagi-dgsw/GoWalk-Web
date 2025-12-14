@@ -116,6 +116,8 @@ const WalkStart = () => {
                 const watchId = navigator.geolocation.watchPosition(
                     (position) => {
                         const { latitude, longitude } = position.coords;
+                        document.body["latitude"] = latitude;
+                        document.body["longitude"] = longitude;
                         const loc = new window.kakao.maps.LatLng(latitude, longitude);
 
                         // 마커 위치 갱신

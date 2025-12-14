@@ -483,3 +483,13 @@ export const LoadingText = styled.p`
   font-weight: 600;
   color: white;
 `;
+
+export const InputBox = styled.input`
+  width: 100%;
+  border-radius: 10px;
+  font-size: 16px;
+  padding: 15px 10px;
+  border: 1px solid #ccc;
+  margin: 10px 0;
+  box-sizing: border-box;
+`;

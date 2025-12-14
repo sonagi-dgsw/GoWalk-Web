@@ -4,6 +4,8 @@ import { MapContainer } from "./styles/styles";
 import WalkInfoCard from "./components/WalkInfoCard";
 import * as S from "./styles/styles.ts";
 import marker from "@assets/marker.png";
+import {useAtomValue} from "jotai/index";
+import {routeAtom} from "@/atoms/atoms.ts";
 
 const arrowSVG = (angle: number) => `
   <div style="
@@ -71,6 +73,7 @@ const Walk = () => {
     const mapInstance = useRef<any>(null);
     const userMarkerRef = useRef<any>(null);
     const watchIdRef = useRef<number | null>(null);
+    const route = useAtomValue(routeAtom);
 
     const polylineRef = useRef<any>(null);
     const overlays = [];
@@ -124,16 +127,7 @@ const Walk = () => {
                 );
 
                 /** 경로 */
-                const linePath = [
-                    { lat: 35.317190285088, lng: 129.00304170840155 },
-                    { lat: 35.31726939771425, lng: 129.00316185288472 },
-                    { lat: 35.31830924640805, lng: 129.0019973155924 },
-                    { lat: 35.31797054397812, lng: 129.00149969644477 },
-                    { lat: 35.317415922679885, lng: 129.002068745145 },
-                    { lat: 35.316934641667494, lng: 129.00147416233088 },
-                    { lat: 35.31641477776775, lng: 129.00212102327515 },
-                    { lat: 35.317190285088, lng: 129.00304170840155 },
-                ].map(p => new window.kakao.maps.LatLng(p.lat, p.lng));
+                const linePath = route.map(p => new window.kakao.maps.LatLng(p.lat, p.lng));
 
                 /** Polyline */
                 const polyline = new window.kakao.maps.Polyline({
