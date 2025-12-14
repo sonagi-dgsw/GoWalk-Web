@@ -14,6 +14,7 @@ const SignIn = () => {
   } = useForm();
   const onSubmit = async () => {
       const res = await GoWalkAxios.post<SignInApiResponse>("/api/auth/signin", getValues());
+      localStorage.setItem("accessToken", res.data.data.accessToken);
       if (res.status >= 200 && res.status < 300) window.location.href = "/";
       else {
           const data = (res as unknown as AxiosError).response.data as SignInApiResponse;

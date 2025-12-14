@@ -1,9 +1,7 @@
 import GoWalkAxios from "@/axios/GoWalkAxios.ts";
-import {Cookies} from "react-cookie";
 
 export const fetchUser = async () => {
-    const cookies = new Cookies();
-    const accessToken = cookies.get("accessToken");
+    const accessToken = localStorage.getItem("accessToken");
     if(!accessToken || accessToken.trim() == "") {
         alert("로그인 후 이용해 주세요.")
         window.location.href = "/signin";
