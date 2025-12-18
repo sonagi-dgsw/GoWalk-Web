@@ -72,7 +72,7 @@ const Home: React.FC = () => {
                 </div>
             </div>
             <div className="consecutive_days_box">
-                <div className="consecutive_days">- 일</div>
+                <div className="consecutive_days">0 일</div>
                 <div className="consecutive_days_text">연속으로 산책했어요</div>
             </div>
         </div>
