@@ -24,7 +24,9 @@ export const Container = styled.div<{$showNavigation: boolean, $isMobile: boolea
     overflow: hidden;
     display: grid;
     position: relative;
+    justify-content: center;
     grid-template-rows: 1fr ${props => props.$showNavigation ? "80px" : 0};
+    grid-template-columns: 1fr;
     background-color: white;
     box-shadow: 2px 4px 7px 0px rgba(0,0,0,0.1);
     -webkit-box-shadow: 2px 4px 7px 0px rgba(0,0,0,0.1);
@@ -32,7 +34,8 @@ export const Container = styled.div<{$showNavigation: boolean, $isMobile: boolea
 `
 
 export const Content = styled.div`
-    width: 100%;
+    width: 375px;
     overflow-x: hidden;
     overflow-y: auto;
+    margin: 0 auto;
 `;

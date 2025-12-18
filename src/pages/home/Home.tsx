@@ -15,6 +15,7 @@ import {useAtomValue} from "jotai";
 import {userAtom} from "@/atoms/atoms.ts";
 import goWalkAxios from "@/axios/GoWalkAxios.ts";
 import RecentRoute from "@/pages/home/components/RecentRoute.tsx";
+import Loading from "@/widgets/loading/Loading.tsx";
 
 const Home: React.FC = () => {
     const [profile, setProfile] = useState<IProfileApiResponse>();
@@ -25,7 +26,11 @@ const Home: React.FC = () => {
         });
     }, [])
 
-    if(user == null || profile == null) return null;
+    if(user == null || profile == null) return (
+        <div className="container">
+            <Loading />
+        </div>
+    );
     const dogGender = user.petGender == "MALE" ? "♂" : "♀";
   return (
     <div className="container">

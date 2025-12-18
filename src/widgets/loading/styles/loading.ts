@@ -21,7 +21,10 @@ export const Container = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    width: 375px;
     height: 100%;
     gap: 20px;
     position: absolute;

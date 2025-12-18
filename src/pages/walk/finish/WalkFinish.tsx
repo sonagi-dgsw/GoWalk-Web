@@ -2,11 +2,14 @@ import * as S from "./styles/walkFinishStyle.ts";
 import Slide from "../../../components/slide/Slide.tsx";
 import {useNavigate} from "react-router";
 import {useEffect, useRef, useState} from "react";
+import {useAtomValue} from "jotai/index";
+import {routeAtom, userAtom} from "@/atoms/atoms.ts";
 
 const WalkFinishPage = () => {
     const navigate = useNavigate();
     const [distanceFeedback, setDistanceFeedback] = useState(3);
     const [moodFeedback, setMoodFeedback] = useState(3);
+    const route = useAtomValue(routeAtom);
 
     const KAKAO_MAP_KEY = import.meta.env.VITE_KAKAO_MAP_KEY;
     const mapRef = useRef<HTMLDivElement | null>(null);
@@ -29,16 +32,7 @@ const WalkFinishPage = () => {
                 mapInstance.current = map;
 
                 /** 경로 */
-                const linePath = [
-                    { lat: 35.317190285088, lng: 129.00304170840155 },
-                    { lat: 35.31726939771425, lng: 129.00316185288472 },
-                    { lat: 35.31830924640805, lng: 129.0019973155924 },
-                    { lat: 35.31797054397812, lng: 129.00149969644477 },
-                    { lat: 35.317415922679885, lng: 129.002068745145 },
-                    { lat: 35.316934641667494, lng: 129.00147416233088 },
-                    { lat: 35.31641477776775, lng: 129.00212102327515 },
-                    { lat: 35.317190285088, lng: 129.00304170840155 },
-                ].map(p => new window.kakao.maps.LatLng(p.lat, p.lng));
+                const linePath = route.map(p => new window.kakao.maps.LatLng(p.lat, p.lng));
 
                 map.setCenter(linePath[0]);
 

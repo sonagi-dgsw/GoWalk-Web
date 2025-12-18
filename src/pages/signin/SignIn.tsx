@@ -22,7 +22,7 @@ const SignIn = () => {
       }
   }
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <S.Form onSubmit={handleSubmit(onSubmit)}>
       <S.Gowalk
         src={logo}
         alt=""
@@ -46,7 +46,7 @@ const SignIn = () => {
           계정이 없으신가요?  <S.Domember>회원가입하기</S.Domember>
         </S.AskAccount>
       </Link>
-    </form>
+    </S.Form>
   );
 };
 

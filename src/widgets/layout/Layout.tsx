@@ -38,16 +38,20 @@ const public_url = [
     "/member_gender"
 ]
 
-function useWindowWidth() {
+function useWindowSize() {
+    const [height, setHeight] = useState(window.innerHeight);
     const [width, setWidth] = useState(window.innerWidth);
 
     useEffect(() => {
-        const handleResize = () => setWidth(window.innerWidth);
+        const handleResize = () => {
+            setHeight(window.innerHeight);
+            setWidth(window.innerWidth);
+        }
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize); // Cleanup
     }, []); // Empty dependency array means this runs once on mount
 
-    return width;
+    return [height, width];
 }
 
 const Layout = () => {
@@ -55,7 +59,7 @@ const Layout = () => {
     const [isLoading, setIsLoading] = useState(true);
     const location = useLocation();
     const pathname = location.pathname;
-    const width = useWindowWidth();
+    const [height, width] = useWindowSize();
 
     const showNavigation = !(independent_pages.includes(pathname));
 
@@ -69,11 +73,13 @@ const Layout = () => {
         }
     }, [])
 
+    const $isMobile = height > width;
+
     return <S.Wrapper>
-        {width > 430 && (
+        {!$isMobile && (
             <S.Banner alt="banner-left" src={banner_left} />
         )}
-        <S.Container $showNavigation={showNavigation} $isMobile={width <= 430}>
+        <S.Container $showNavigation={showNavigation} $isMobile={height > width}>
             {isLoading && (
                 <Loading />
             )}
@@ -84,7 +90,7 @@ const Layout = () => {
             </Suspense>
             {showNavigation && <Navigation />}
         </S.Container>
-        {width > 430 && (
+        {!$isMobile && (
             <S.Banner alt="banner-left" src={banner_right} />
         )}
     </S.Wrapper>

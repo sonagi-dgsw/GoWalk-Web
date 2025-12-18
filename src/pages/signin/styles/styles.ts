@@ -1,11 +1,15 @@
 import styled from "styled-components";
 
+export const Form = styled.form`
+    width: 373px;
+`
+
 export const Gowalk = styled.img`
   margin-top: 153px;
+    height: 50px;
   width: 180px;
   margin-bottom: 90.09px;
   margin-left: 111px;
-    height: fit-content;
 `;
 
 export const InputFormtitle = styled.h1`

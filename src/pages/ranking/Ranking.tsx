@@ -10,6 +10,7 @@ import {fetchDistanceRanking, fetchTimeRanking} from "@/pages/ranking/api/fetchT
 import {useAtomValue} from "jotai/index";
 import {userAtom} from "@/atoms/atoms.ts";
 import {Ranking} from "@/pages/ranking/types/Ranking_type.tsx";
+import Loading from "@/widgets/loading/Loading.tsx";
 
 const Ranking: React.FC = () => {
     const user = useAtomValue(userAtom);
@@ -44,7 +45,11 @@ const Ranking: React.FC = () => {
             fetchRankingData();
         }
     }, [user, mode]);
-    if(user == null || rankingData == null) return;
+    if(user == null || rankingData == null) return (
+        <div className="container">
+            <Loading />
+        </div>
+    );
 
     const sortedData = [...rankingData].sort((a, b) =>
         mode === "distance" ? b.walkDistance - a.walkDistance : b.walkDay - a.walkDay
