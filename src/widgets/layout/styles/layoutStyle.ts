@@ -18,6 +18,7 @@ export const Banner = styled.img`
 export const Container = styled.div<{$showNavigation: boolean, $isMobile: boolean}>`
     width: ${props => props.$isMobile ? "100vw" : "375px"}; // iPhone 12 Size
     height: ${props => props.$isMobile ? "100vh" : "812px"}; // iPhone 12 Size
+    max-height: 100vh;
     border-radius: ${props => props.$isMobile ? 0 : "30px"};
     border: 1px solid #ccc;
     box-sizing: border-box;
@@ -34,6 +35,7 @@ export const Container = styled.div<{$showNavigation: boolean, $isMobile: boolea
 `
 
 export const Content = styled.div`
+    height: 100%;
     width: 375px;
     overflow-x: hidden;
     overflow-y: auto;
