@@ -8,7 +8,6 @@ const Member_emailaddress = () => {
     const [isFocused, setIsFocused] = useState(false);
   const {
     register,
-    setError,
     formState: { errors },
     handleSubmit,
   } = useForm();

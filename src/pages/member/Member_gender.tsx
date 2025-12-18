@@ -1,11 +1,10 @@
 import * as S from "./styles/styles.ts";
 import { Link } from "react-router";
 import { useState } from "react";
-import {useNavigate} from "react-router-dom";
+
 const Member_gender=()=>{
     const [clickmale,setClickmale]=useState(false);
     const [clickfemale,setClickfemale]=useState(false);
-    const navigate = useNavigate();
     const onClickMale=()=>{
         setClickmale(true);
         setClickfemale(false);
@@ -15,10 +14,8 @@ const Member_gender=()=>{
         setClickmale(false);
     }
     const onSubmit=(e:any)=>{
-        if (clickmale===false && clickfemale===false){
-            e.preventDefault();
-        }
-        navigate("/");
+        e.preventDefault();
+        window.location.href = "/signin";
     }
     return(
         <form onSubmit={onSubmit}>

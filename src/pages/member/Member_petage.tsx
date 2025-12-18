@@ -16,11 +16,9 @@ const Member_petage=()=>{
     }
     const navigate=useNavigate();
     const onSubmit=(e:any)=>{
+        e.preventDefault();
         if (value>0) {
             navigate("/member_petweight")
-        }
-        else{
-            e.preventDefault();
         }
     }
     return(

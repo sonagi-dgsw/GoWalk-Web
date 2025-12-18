@@ -25,6 +25,7 @@ function Setting() {
   }
 
   const logout = () => {
+    localStorage.removeItem("accessToken");
     cookies.remove("accessToken");
     cookies.remove("refreshToken");
     // @ts-ignore

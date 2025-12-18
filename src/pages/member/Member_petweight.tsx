@@ -16,13 +16,11 @@ const Member_petweight=()=>{
             setValue(value-1);
         }
     }
-    const navigate=useNavigate();
+    const navigate= useNavigate();
     const onSubmit=(e:any)=>{
+        e.preventDefault();
         if (value>0) {
             navigate("/member_gender")
-        }
-        else{
-            e.preventDefault();
         }
     }
     return(
